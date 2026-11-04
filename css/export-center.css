@@ -1,0 +1,83 @@
+/* All selectors are scoped: no global theme, dialog, input or table overrides. */
+#sideAuroraCard #erpExportOpen { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; flex: 0 0 auto; }
+#erpExportOpen svg { width: 15px; height: 15px; }
+#erpExportDialog {
+  --ex-accent: var(--primary, var(--pastel-lavender, #d85c9d));
+  --ex-muted: color-mix(in srgb, var(--muted) 70%, var(--text));
+  box-sizing: border-box; width: min(1080px, calc(100% - 24px)); max-width: none; max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); margin: auto; padding: 0;
+  overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius, 18px); color: var(--text); font: inherit; box-shadow: var(--shadow);
+  background: linear-gradient(var(--surface), var(--surface)), var(--bg-primary, var(--bg, #fff));
+}
+#erpExportDialog *, #erpExportDialog *::before, #erpExportDialog *::after { box-sizing: border-box; }
+#erpExportDialog:not([open]), #erpExportDialog [hidden] { display: none !important; }
+#erpExportDialog[open] { display: flex; flex-direction: column; animation: export-appear .16s ease-out; }
+#erpExportDialog::backdrop { background: #0009; }
+#erpExportDialog :focus-visible { outline: 2px solid var(--ex-accent); outline-offset: 3px; }
+#erpExportDialog .export-header { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; padding: 22px 26px 18px; flex-shrink: 0; border-bottom: 1px solid var(--line); }
+#erpExportDialog .export-eyebrow { margin: 0 0 6px; text-transform: uppercase; font-size: 10px; letter-spacing: .12em; color: var(--ex-muted); }
+#erpExportDialog h2 { color: var(--text); font: inherit; font-weight: 800; font-size: 23px; margin: 0 0 8px; }
+#erpExportDialog #ex-description { color: var(--ex-muted); font-size: 12px; line-height: 1.6; margin: 0; }
+#erpExportDialog h3 { font: inherit; font-weight: 750; font-size: 14px; color: var(--text); margin: 12px 0; }
+#erpExportDialog .export-body { overflow: auto; overscroll-behavior: contain; min-height: 0; padding: 12px 26px 24px; scrollbar-gutter: stable; }
+#erpExportDialog #ex-workspace { border: 0; margin: 0; padding: 0; min-width: 0; }
+#erpExportDialog .export-sr { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+#erpExportDialog button { appearance: none; font: inherit; font-size: 12px; color: var(--text); border: 1px solid var(--line); background: var(--surface-2); border-radius: 9px; padding: 9px 12px; cursor: pointer; min-height: 36px; transition: background .15s, border-color .15s; }
+#erpExportDialog button:hover:not(:disabled) { background: var(--surface-3); border-color: var(--ex-accent); }
+#erpExportDialog button:disabled { opacity: .5; cursor: default; }
+#erpExportDialog #ex-close { flex: 0 0 auto; min-width: 36px; }
+#erpExportDialog .export-hint { font-size: 11px; line-height: 1.65; color: var(--ex-muted); margin: 8px 0 12px; overflow-wrap: anywhere; }
+#erpExportDialog .export-toolbar { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0 16px; }
+#erpExportDialog .export-selection { border: 1px solid var(--line); background: var(--surface-2); border-radius: 12px; padding: 14px; margin-bottom: 18px; }
+#erpExportDialog #ex-count { font-size: 13px; line-height: 1.6; display: block; }
+#erpExportDialog #ex-chips { display: flex; gap: 6px; flex-wrap: wrap; font-size: 11px; color: var(--ex-muted); }
+#erpExportDialog .export-chip { border-radius: 15px; background: var(--surface); text-align: left; font-size: 11px; padding: 6px 10px; min-height: 30px; max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; }
+#erpExportDialog #ex-errors { margin: 10px 0 0; font-size: 12px; line-height: 1.6; color: var(--text); border-left: 3px solid var(--ex-accent); padding-left: 10px; }
+#erpExportDialog .export-section { margin: 0 0 9px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+#erpExportDialog summary { cursor: pointer; padding: 14px 16px; font-size: 13px; font-weight: 700; color: var(--text); }
+#erpExportDialog summary:hover { background: var(--surface-2); border-radius: 12px; }
+#erpExportDialog .export-section-content { padding: 0 16px 16px; }
+#erpExportDialog .export-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 12px; }
+#erpExportDialog .export-field { display: flex; flex-direction: column; min-width: 0; gap: 7px; font-size: 12px; line-height: 1.5; color: var(--text); }
+#erpExportDialog .export-field small { color: var(--ex-muted); font-size: 10px; }
+#erpExportDialog :is(input:not([type=checkbox]), select, textarea) { width: 100%; max-width: 100%; min-width: 0; color: var(--text); background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; font: inherit; font-size: 13px; }
+#erpExportDialog select option { color: var(--text); background: var(--surface); padding: 4px 6px; }
+#erpExportDialog select[multiple] { min-height: 112px; padding: 5px; }
+#erpExportDialog textarea { resize: vertical; line-height: 1.6; }
+#erpExportDialog .export-check { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 1.6; margin: 10px 0; }
+#erpExportDialog input[type=checkbox] { width: 17px; height: 17px; flex: 0 0 17px; accent-color: var(--ex-accent); margin: 0; }
+#erpExportDialog .export-obs-group { margin: 14px 0; padding: 12px; border: 1px solid var(--line); border-radius: 10px; min-width: 0; }
+#erpExportDialog .export-obs-group legend { font-size: 11px; padding: 0 6px; font-weight: 700; }
+#erpExportDialog .export-obs-rule { display: grid; grid-template-columns: 24px 65px minmax(140px, 1fr) minmax(150px, 1.6fr) 36px; align-items: center; gap: 10px; margin-bottom: 14px; }
+#erpExportDialog .export-operator { font-size: 10px; font-weight: 800; }
+#erpExportDialog .export-format { margin: 22px 0; padding: 16px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; }
+#erpExportDialog .export-format h3 { margin-top: 0; }
+#erpExportDialog .export-format select { max-width: 320px; background: var(--surface); }
+#erpExportDialog .export-table-scroll { width: 100%; overflow: auto; border: 1px solid var(--line); border-radius: 10px; max-height: 380px; }
+#erpExportDialog table { border-collapse: collapse; table-layout: fixed; width: 100%; min-width: 950px; margin: 0; }
+#erpExportDialog th { position: sticky; top: 0; z-index: 1; background: var(--surface-2); color: var(--text); font-size: 10px; text-align: left; }
+#erpExportDialog :is(th,td) { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+#erpExportDialog td { color: var(--text); font-size: 11px; background: var(--surface); }
+#erpExportDialog td div { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 110px; overflow: auto; }
+#erpExportDialog th:nth-child(2) { width: 180px; } #erpExportDialog th:last-child { width: 230px; }
+#erpExportDialog .export-pagination { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 12px 0 0; font-size: 11px; }
+#erpExportDialog .export-footer { flex-shrink: 0; padding: 12px 26px 18px; border-top: 1px solid var(--line); background: var(--surface); }
+#erpExportDialog #ex-status { margin: 0 0 8px; min-height: 17px; font-size: 12px; line-height: 1.5; color: var(--text); }
+#erpExportDialog .export-footer > div { display: flex; justify-content: flex-end; gap: 10px; }
+#erpExportDialog .export-primary { min-width: 150px; background: var(--surface-3); border-color: var(--ex-accent); font-weight: 800; }
+html[data-erp-theme=glassy-crm] #erpExportDialog { background: linear-gradient(135deg,#a68bf41c,#65ddeb0c),var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+@media(max-width:600px) {
+  #erpExportDialog .export-header { padding: 16px; } #erpExportDialog h2 { font-size: 19px; }
+  #erpExportDialog .export-body { padding: 10px 14px 18px; } #erpExportDialog .export-footer { padding: 10px 16px 14px; }
+  #erpExportDialog .export-grid { grid-template-columns: minmax(0,1fr); }
+  #erpExportDialog .export-section-content { padding: 0 12px 12px; }
+  #erpExportDialog .export-obs-rule { grid-template-columns: 24px 1fr 36px; }
+  #erpExportDialog .export-obs-rule .export-field { grid-column: 1 / -1; }
+  #erpExportDialog .export-obs-rule button { grid-column: 3; grid-row: 1; }
+  #erpExportDialog :is(input:not([type=checkbox]), select, textarea) { font-size: 16px; }
+  #erpExportDialog .export-toolbar button { flex: 1 1 120px; }
+  #erpExportDialog .export-pagination span { text-align: center; }
+  #erpExportDialog .export-primary { flex: 1; }
+}
+@media(max-width:480px) { #erpExportOpen span { display: none; } #sideAuroraCard #erpExportOpen { min-width: 36px; justify-content: center; } }
+@keyframes export-appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media(prefers-reduced-motion:reduce) { #erpExportDialog[open] { animation: none; } #erpExportDialog button { transition: none; } }

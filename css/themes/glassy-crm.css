@@ -1,0 +1,171 @@
+/* Herda a cobertura dos componentes existentes. Esta folha e sua importação
+   só participam da cascata quando Glassy CRM está selecionado. */
+@import url('./escuro.css');
+
+html[data-erp-theme="glassy-crm"] {
+  --bg-primary: #080a10; --bg-surface: rgba(25,27,37,.76);
+  --bg-surface-elevated: rgba(35,37,49,.60); --bg-surface-accent: rgba(50,48,70,.52);
+  --text-main: #f0f0f7; --text-muted: #b1b3c6; --text-dim: #969bad;
+  --line-subtle: rgba(218,219,241,.14); --line-highlight: rgba(215,209,255,.32);
+  --gemini-cyan: #79daec; --gemini-blue: #a596ed; --gemini-purple: #b9a4ff;
+  --gemini-gradient: linear-gradient(135deg,#7c65bc,#514571);
+  --primary: #b5a1ff; --primary-2: #74d9eb; --sidebar-w: 80px; --sidebar: 80px;
+  --glass-blur: blur(12px); --radius: 18px;
+  --shadow-card: inset 0 1px 0 rgba(255,255,255,.11),inset 0 0 0 1px rgba(255,255,255,.025),0 12px 30px rgba(0,0,0,.3);
+  --shadow: var(--shadow-card); --erp-decoration: "◈";
+}
+html[data-erp-theme="glassy-crm"] body {
+  background: radial-gradient(ellipse at 23% 5%,rgba(112,83,170,.15),transparent 46%),linear-gradient(0deg,#06080de0,#06080d26),url('../../assets/images/glassy/facets.svg') center top/360px 312px fixed;
+}
+html[data-erp-theme="glassy-crm"] .app {
+  width: calc(100% - 48px); max-width: 1680px; min-height: calc(100vh - 48px); margin: 24px auto;
+  grid-template-columns: 80px minmax(0,1fr); border: 1px solid rgba(232,231,249,.25); border-radius: 24px;
+  background: linear-gradient(135deg,rgba(56,53,73,.62),rgba(15,20,28,.9) 65%);
+  box-shadow: inset 0 1px 2px #ffffff24,0 0 0 5px #ffffff03,0 32px 100px #0009;
+}
+html[data-erp-theme="glassy-crm"] .sidebar { width: 80px; height: calc(100vh - 48px); top: 24px; padding: 20px 12px; background: linear-gradient(180deg,#2c273b7a,#11121dc9); border-radius: 24px 0 0 24px; overflow-x: hidden; }
+html[data-erp-theme="glassy-crm"] .brand { justify-content: center; border: 0; padding: 0 0 14px; margin: 0; gap: 0; }
+html[data-erp-theme="glassy-crm"] .brand-mark { width: 37px; height: 37px; border-radius: 50%; color: #e2d8ff; border-color: #ffffff22; background: linear-gradient(145deg,#c7b5fa38,#ffffff08); box-shadow: inset 0 1px 2px #ffffff40; }
+html[data-erp-theme="glassy-crm"] .sidebar :is(.brand-title,.brand-sub,.side-section,.nav-btn > span:not(.nav-icon)) { display: block; position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+html[data-erp-theme="glassy-crm"] .sidebar .nav { gap: 12px; margin-top: 12px; }
+html[data-erp-theme="glassy-crm"] .sidebar .nav-btn { min-height: 44px; width: 48px; padding: 10px; justify-content: center; position: relative; border-radius: 12px; }
+html[data-erp-theme="glassy-crm"] .nav-icon { color: #b5b2c8; }
+html[data-erp-theme="glassy-crm"] .nav-btn.active { background: linear-gradient(135deg,#cdc3f52b,#ccc7f008); border-color: #ddd7f029; box-shadow: inset 0 1px 1px #fff2; }
+html[data-erp-theme="glassy-crm"] .nav-btn.active::after { content: ''; position: absolute; right: -9px; top: 14px; width: 3px; height: 15px; background: #c9df80; border-radius: 5px; box-shadow: 0 0 10px #c9df8070; }
+html[data-erp-theme="glassy-crm"] .sidebar .side-card { padding: 10px 3px; margin-top: auto; border: 0; box-shadow: none; background: transparent; text-align: center; }
+html[data-erp-theme="glassy-crm"] .sidebar .side-card :is(.side-card-title,.side-small) { font-size: 8px; line-height: 1.5; }
+html[data-erp-theme="glassy-crm"] .main { min-width: 0; padding: 24px 26px 36px; }
+html[data-erp-theme="glassy-crm"] .topbar { align-items: center; margin-bottom: 22px; }
+html[data-erp-theme="glassy-crm"] .eyebrow { font-size: 9px; color: #aea8c6; letter-spacing: .18em; }
+html[data-erp-theme="glassy-crm"] .page-title { font-size: clamp(24px,2.5vw,34px); color: #f4f2fa; -webkit-text-fill-color: currentColor; letter-spacing: -1px; margin: 5px 0; }
+html[data-erp-theme="glassy-crm"] .page-subtitle { font-size: 11px; color: var(--muted); }
+html[data-erp-theme="glassy-crm"] .glassy-live-dot { display: inline-block; margin-left: 8px; width: 5px; height: 5px; border-radius: 50%; background: #8dd8bc; box-shadow: 0 0 10px #8dd8bc66; }
+html[data-erp-theme="glassy-crm"] :is(.panel,.kpi,.status,.filters) { background: linear-gradient(145deg,#ffffff0b,#ffffff00 55%),var(--surface); border-color: #d7d3ed24; box-shadow: var(--shadow-card); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+html[data-erp-theme="glassy-crm"] .kpi:first-child { background: radial-gradient(ellipse at top left,#b3a1ff31,transparent 80%),linear-gradient(135deg,#6953a480,#45396780); border-color: #d4c3ff40; }
+html[data-erp-theme="glassy-crm"] .kpi { padding: 18px; border-radius: 16px; }
+html[data-erp-theme="glassy-crm"] .kpi::after { display: none; }
+html[data-erp-theme="glassy-crm"] .kpi-icon { float: right; width: 28px; height: 28px; font-size: 12px; border-radius: 50%; background: #ffffff0b; color: #c7bfdc; border-color: #ffffff18; }
+html[data-erp-theme="glassy-crm"] .kpi-label { font-size: 10px; text-transform: none; letter-spacing: 0; color: #cbc7db; }
+html[data-erp-theme="glassy-crm"] .kpi-value { font-family: 'Manrope',sans-serif; font-size: 28px; padding-top: 10px; }
+html[data-erp-theme="glassy-crm"] .kpi-note { font-size: 10px; }
+html[data-erp-theme="glassy-crm"] .panel-head { background: #ffffff03; border-color: #ffffff0e; }
+html[data-erp-theme="glassy-crm"] :is(.panel-title,.status-title) { font-size: 13px; font-weight: 700; }
+html[data-erp-theme="glassy-crm"] .control { border-color: #ffffff20; background: linear-gradient(180deg,#ffffff08,#ffffff02); border-radius: 10px; color: var(--text); }
+html[data-erp-theme="glassy-crm"] select option { background: #242532; color: #f0f0f7; }
+html[data-erp-theme="glassy-crm"] :is(.btn-soft,.icon-btn) { background: linear-gradient(180deg,#ffffff0c,#ffffff04); border-color: #ffffff20; color: #d5d2e4; box-shadow: inset 0 1px 0 #ffffff12; }
+html[data-erp-theme="glassy-crm"] .btn-primary { background: linear-gradient(135deg,#7560b4,#534579); border-color: #c6b1ff55; box-shadow: inset 0 1px 1px #ffffff33,0 4px 14px #22193666; }
+html[data-erp-theme="glassy-crm"] :is(button,a,input,textarea,select,summary):focus-visible { outline: 2px solid #aee6f2; outline-offset: 3px; }
+html[data-erp-theme="glassy-crm"] .progress > div { background: linear-gradient(90deg,#a28cdf,#79daec); box-shadow: 0 0 10px #86b3df33; }
+html[data-erp-theme="glassy-crm"] :is(.summary-row,.compose-wrap) { background: #ffffff04; border-color: #ffffff12; }
+html[data-erp-theme="glassy-crm"] .table th { background: #1c1c29; }
+html[data-erp-theme="glassy-crm"] .money-total strong { color: #9de2d2; text-shadow: none; }
+html[data-erp-theme="glassy-crm"] #sideAuroraCard { background: linear-gradient(135deg,#7f6bba12,#2c8ca30a),var(--surface); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+html[data-erp-theme="glassy-crm"] #sideAuroraCard .aurora-live-block { background: linear-gradient(145deg,#ffffff06,#ffffff00),#15172055; box-shadow: inset 0 1px 0 #ffffff09; }
+html[data-erp-theme="glassy-crm"] #sideAuroraCard::before { opacity: .45; height: 1px; }
+html[data-erp-theme="glassy-crm"] #sideAuroraCard .side-aurora-avatar { background: #b29bd525; color: #d2baff; border: 1px solid #ffffff1c; }
+html[data-erp-theme="glassy-crm"] :is(#erp-settings,#auroraAchievementsDialog,.ai-panel,.floating-window,.loading-card,.aurora-voice-card) { background: linear-gradient(145deg,#302d41f5,#111923fa); border-color: #e4d9ff30; box-shadow: inset 0 1px 1px #ffffff26,0 20px 70px #0008; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+html[data-erp-theme="glassy-crm"] :is(.aurora-voice-title,.aurora-voice-transcript) { color: var(--text); }
+html[data-erp-theme="glassy-crm"] .aurora-voice-close { background: #ffffff0b; color: var(--text); }
+html[data-erp-theme="glassy-crm"] .msg.user { background: linear-gradient(135deg,#7158a1,#4c476b); }
+html[data-erp-theme="glassy-crm"] .msg.bot { background: #ffffff08; }
+html[data-erp-theme="glassy-crm"][data-erp-layout="top"] .app { display: block; }
+html[data-erp-theme="glassy-crm"][data-erp-layout="top"] .sidebar { width: 100%; height: auto; top: auto; border-radius: 24px 24px 0 0; padding: 12px 20px; }
+html[data-erp-theme="glassy-crm"][data-erp-layout="top"] .sidebar .nav { margin: 0; flex-direction: row; }
+html[data-erp-theme="glassy-crm"][data-erp-layout="top"] .sidebar .side-card { margin: 0 0 0 auto; }
+@media(max-width:900px) {
+  html[data-erp-theme="glassy-crm"] .app { width: calc(100% - 20px); margin: 10px; display: block; border-radius: 18px; }
+  html[data-erp-theme="glassy-crm"] .sidebar { width: 100%; height: auto; top: auto; padding: 10px 14px; border-radius: 18px 18px 0 0; border-bottom: 1px solid var(--line); }
+  html[data-erp-theme="glassy-crm"] .sidebar .brand { display: none; }
+  html[data-erp-theme="glassy-crm"] .sidebar .nav { margin: 0; gap: 10px; }
+  html[data-erp-theme="glassy-crm"] .sidebar .side-card { display: none; }
+  html[data-erp-theme="glassy-crm"] .main { padding: 20px 16px; }
+  html[data-erp-theme="glassy-crm"] .content-grid { grid-template-columns: minmax(0,1fr); }
+}
+@media(max-width:600px) {
+  html[data-erp-theme="glassy-crm"] .app { width: 100%; margin: 0; border-radius: 0; border-left: 0; border-right: 0; }
+  html[data-erp-theme="glassy-crm"] .main { padding: 18px 12px; }
+  html[data-erp-theme="glassy-crm"] .kpi-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  html[data-erp-theme="glassy-crm"] .kpi { padding: 13px; }
+  html[data-erp-theme="glassy-crm"] .kpi-icon { float: none; margin-bottom: 7px; }
+}
+@supports not (backdrop-filter:blur(1px)) {
+  html[data-erp-theme="glassy-crm"] :is(.panel,.kpi,.status,#sideAuroraCard) { background-color: #20212d; }
+}
+
+/* Status original da nuvem: os IDs e os valores continuam sob controle do core. */
+@media(min-width:901px) {
+  html[data-erp-theme="glassy-crm"] .sidebar { overflow-y: auto; scrollbar-width: thin; }
+  html[data-erp-theme="glassy-crm"] .sidebar .side-card {
+    display: flex; flex-direction: column; align-items: center; gap: 9px;
+    width: 100%; min-width: 0; flex-shrink: 0; padding: 14px 0 4px;
+  }
+  html[data-erp-theme="glassy-crm"] .sidebar .side-card-title {
+    width: 100%; margin: 0; font-size: 10px; line-height: 1.45; font-weight: 600;
+    text-transform: none; letter-spacing: 0; text-align: center; overflow-wrap: anywhere; color: #cbc7db;
+  }
+  html[data-erp-theme="glassy-crm"] .sidebar .sync-line {
+    display: flex; flex-direction: column; align-items: center; gap: 9px; width: 100%; min-width: 0;
+  }
+  html[data-erp-theme="glassy-crm"] .sidebar .sync-line > span:first-child {
+    display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; min-width: 0;
+  }
+  html[data-erp-theme="glassy-crm"] #sideDot { width: 6px; height: 6px; flex: 0 0 6px; margin: 0; }
+  html[data-erp-theme="glassy-crm"] #sideStatus { min-width: 0; font-size: 10px; line-height: 1.4; overflow-wrap: anywhere; text-align: center; }
+  html[data-erp-theme="glassy-crm"] #sideCount {
+    display: block; max-width: 100%; min-width: 28px; padding: 4px; border: 1px solid #bca8f53d; border-radius: 8px;
+    font-size: 12px; line-height: 1.2; font-weight: 700; font-variant-numeric: tabular-nums;
+    text-align: center; overflow-wrap: anywhere; color: #e2dbfa; background: #b8a0f516;
+  }
+  html[data-erp-theme="glassy-crm"][data-erp-layout="top"] .sidebar .side-card { width: 170px; padding: 0 10px; gap: 6px; }
+  html[data-erp-theme="glassy-crm"][data-erp-layout="top"] .sidebar .sync-line { flex-direction: row; justify-content: center; }
+  html[data-erp-theme="glassy-crm"][data-erp-layout="top"] .sidebar .sync-line > span:first-child { width: auto; }
+}
+html[data-erp-theme="glassy-crm"] #glassyAmbient { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+html[data-erp-theme="glassy-crm"] .glassy-mascot {
+  position: fixed; right: 22px; bottom: 22px; width: 54px; height: 54px; z-index: 45;
+  display: grid; place-items: center; padding: 0; border: 1px solid #c6afff80; border-radius: 18px;
+  color: #a5f1ff; background: linear-gradient(135deg,#76609775,#142532ef); backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 2px #fff5,0 0 26px #9c73dc35; font-size: 32px; cursor: pointer;
+  animation: glassy-crystal-float 5s ease-in-out infinite;
+}
+html[data-erp-theme="glassy-crm"] .glassy-mascot:hover { border-color: #b9f8ff; box-shadow: inset 0 1px 2px #fff5,0 0 30px #8ecae957; }
+html[data-erp-theme="glassy-crm"] .glassy-bubble {
+  position: absolute; right: 0; bottom: 66px; width: max-content; max-width: min(260px,calc(100vw - 40px));
+  padding: 9px 12px; border: 1px solid #c6afff40; border-radius: 12px; color: #e9e5f5;
+  background: #131a29ee; font: 11px/1.5 'DM Sans',sans-serif; text-align: left; pointer-events: none;
+  box-shadow: 0 8px 30px #0005;
+}
+html[data-erp-theme="glassy-crm"] .glassy-click-spark {
+  position: fixed; z-index: 11000; pointer-events: none; font: 17px monospace; color: #a4f3ff;
+  text-shadow: 0 0 8px #8bcdff; animation: glassy-click-burst .8s ease-out forwards;
+}
+html[data-erp-theme="glassy-crm"] .glassy-click-spark:nth-of-type(2n) { color: #c19bff; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-popup {
+  width: min(520px,calc(100vw - 24px)); padding: 20px 12px; color: #f0eafc;
+  border: 1px solid #c3acff66; border-radius: 24px; background: linear-gradient(145deg,#282139f5,#07141bf5);
+  box-shadow: inset 0 1px 1px #fff4,0 0 70px #8260c544;
+}
+html[data-erp-theme="glassy-crm"] .glassy-matrix-popup .swal2-title { font-size: clamp(17px,4vw,24px); padding: 8px; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-popup .swal2-html-container { margin: 12px 8px 0; padding: 0; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-frame {
+  position: relative; width: min(100%,calc(56dvh * .5628)); margin: 0 auto; overflow: hidden;
+  border: 1px solid #96cfff40; border-radius: 16px; background: #03080e;
+}
+html[data-erp-theme="glassy-crm"] .glassy-matrix-photo { display: block; width: 100%; height: auto; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-canvas { display: none; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-frame.is-ready .glassy-matrix-photo { position: absolute; opacity: 0; pointer-events: none; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-frame.is-ready .glassy-matrix-canvas { display: block; width: 100%; height: auto; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-message { margin: 14px 0 0; font-size: 12px; line-height: 1.7; color: #cbc9de; }
+html[data-erp-theme="glassy-crm"] .glassy-matrix-message strong { color: #a7e8f4; font-weight: 600; }
+html[data-erp-theme="glassy-crm"][data-erp-paused="true"] .glassy-click-spark { animation-play-state: paused; }
+html[data-erp-theme="glassy-crm"][data-erp-effects="false"] .glassy-click-spark { display: none; }
+@keyframes glassy-crystal-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes glassy-click-burst { from { opacity: 1; transform: translate(-50%,-50%) scale(.5); } to { opacity: 0; transform: translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--spin)) scale(1.2); } }
+@media(max-width:600px) {
+  html[data-erp-theme="glassy-crm"] .glassy-mascot { width: 44px; height: 44px; bottom: 14px; right: 14px; font-size: 26px; border-radius: 14px; }
+  html[data-erp-theme="glassy-crm"] .glassy-bubble { bottom: 54px; max-width: min(220px,calc(100vw - 32px)); font-size: 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html[data-erp-theme="glassy-crm"] .glassy-mascot { animation: none; }
+  html[data-erp-theme="glassy-crm"] .glassy-click-spark { display: none; }
+}

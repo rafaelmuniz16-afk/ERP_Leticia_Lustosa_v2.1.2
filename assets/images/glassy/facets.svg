@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="312" viewBox="0 0 360 312">
+  <defs>
+    <linearGradient id="face" x2=".8" y2="1"><stop stop-color="#23252d"/><stop offset="1" stop-color="#0b0d12"/></linearGradient>
+    <linearGradient id="edge" x2="1" y2="1"><stop stop-color="#454752" stop-opacity=".6"/><stop offset="1" stop-color="#05070b"/></linearGradient>
+    <pattern id="panels" width="180" height="156" patternUnits="userSpaceOnUse">
+      <path d="M45 1 135 1 179 78 135 155 45 155 1 78Z" fill="#06080d"/>
+      <path d="M47 6 132 6 173 78 132 149 47 149 7 78Z" fill="url(#face)" stroke="url(#edge)"/>
+      <path d="m47 6 39 71-39 72M132 6 94 77l38 72M86 77H7m87 0h79" fill="none" stroke="#06080d" stroke-width="3"/>
+      <path d="m48 8 39 67h7l37-67M10 80h74l-36 66" fill="none" stroke="#555764" stroke-opacity=".18"/>
+    </pattern>
+  </defs>
+  <path fill="#090b10" d="M0 0h360v312H0z"/><path fill="url(#panels)" d="M0 0h360v312H0z"/>
+</svg>

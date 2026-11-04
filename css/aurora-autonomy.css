@@ -1,0 +1,14 @@
+/* Scoped theme tokens, compact UI, no new animation. */
+#sideAuroraCard .aurora-autonomy-actions{display:flex;align-items:center;gap:6px;margin-top:6px;min-width:0}
+#sideAuroraCard .aurora-autonomy-actions[hidden],#auroraAutonomyStatus[hidden]{display:none}
+#auroraAutonomyAction{white-space:normal;text-align:left;max-width:calc(100% - 32px)}
+#auroraAutonomyDismiss{flex:0 0 28px;min-height:28px}
+#sideAuroraCard #auroraObservation[data-autonomy=true]{max-height:7em;overflow:auto;scrollbar-width:thin}
+#sideAuroraCard #auroraObservation[data-autonomy=true]:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+#erp-settings .aurora-autonomy-options{align-items:start;gap:14px}
+#erp-settings .aurora-autonomy-options label{display:block;min-width:180px;line-height:1.6}
+#erp-settings .aurora-autonomy-options input{vertical-align:middle;margin-right:5px}
+#erp-settings .aurora-autonomy-options small{display:block;color:var(--muted);font-size:11px;line-height:1.5;margin-top:5px}
+#erp-settings .aurora-autonomy-options select{display:block;width:100%;margin-top:6px}
+#auroraAutonomyPreferencesStatus{flex-basis:100%}
+@media(max-width:540px){#erp-settings .aurora-autonomy-options label{min-width:0;flex-basis:100%}}

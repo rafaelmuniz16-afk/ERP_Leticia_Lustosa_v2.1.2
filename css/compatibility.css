@@ -1,0 +1,28 @@
+/* Compatibility adds no legacy theme CSS to another theme. */
+#erp-theme-visuals{display:contents}
+#erp-theme-extras{display:contents}
+.brand-mark{flex-shrink:0}
+.brand-mark svg{display:block;flex-shrink:0;max-width:100%;overflow:visible}
+html[data-erp-effects=false] #erp-theme-visuals canvas,
+html[data-erp-effects=false] #erp-theme-visuals .cute-bg,
+html[data-erp-effects=false] #erp-theme-visuals .snow-bg,
+html[data-erp-effects=false] #erp-theme-visuals .bandeirolas-garland{visibility:hidden}
+html[data-erp-effects=false] #erp-theme-visuals *,html[data-erp-paused=true] #erp-theme-visuals *{animation-play-state:paused!important}
+html[data-erp-paused=true] body::before,html[data-erp-paused=true] body::after{animation-play-state:paused!important}
+.erp-easter-egg img{max-width:100%;height:auto}
+html:not([data-erp-theme=original]) .compose-wrap textarea{background:transparent;color:var(--text)}
+html:not([data-erp-theme=original]) .swal2-popup:not(.erp-easter-egg){background:var(--surface);color:var(--text)}
+html:not([data-erp-theme=original]) .swal2-popup:not(.erp-easter-egg) .swal2-input{background:var(--surface-2);color:var(--text);border-color:var(--line)}
+@media(max-width:900px){.sidebar .brand,html[data-erp-layout=top] .sidebar .brand{display:flex;align-items:center;padding:5px 8px 12px;margin:0;border-bottom:0}.sidebar .brand-title,.sidebar .brand-sub{display:block}.sidebar .side-countdown{display:none}}
+@media(max-width:760px){.brand-mark{width:38px!important;height:38px!important;min-width:38px}.brand-mark svg{width:23px!important;height:23px!important}}
+@media(prefers-reduced-motion:reduce){#erp-theme-visuals *{animation:none!important}}
+/* Canvas intrinsic dimensions must never determine the grid column width. */
+.content-grid > *, .analytics > *, .finance-grid > *, .chart-box, .chart-wrap{min-width:0}
+.chart-wrap{width:100%;max-width:100%}
+.chart-wrap canvas{max-width:100%}
+
+.erp-easter-egg video{display:block;width:100%;max-width:480px;max-height:60vh;object-fit:contain;border-radius:16px;background:#000}
+.erp-easter-egg audio{display:block;width:100%;margin-top:12px}
+.erp-media-status{font:11px/1.5 DM Sans,sans-serif;opacity:.8;margin:12px 0 0}
+.cnj-help{display:block;font-size:10px;line-height:1.4;color:var(--muted);margin-top:5px}
+#numProcesso[aria-invalid=true]{border-color:var(--danger)}

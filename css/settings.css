@@ -1,0 +1,56 @@
+/* Everything in the new settings surface is namespaced. */
+#erp-settings{box-sizing:border-box;width:min(1040px,calc(100vw - 32px));max-height:calc(100dvh - 40px);padding:0;border:1px solid var(--line);border-radius:22px;background:var(--surface);color:var(--text);box-shadow:0 30px 100px #0005;overflow:auto;font-family:'DM Sans',sans-serif}
+#erp-settings::backdrop{background:#07101eb0;backdrop-filter:blur(6px)}
+#erp-settings button,#erp-settings select,#erp-settings input{font:inherit}
+#erp-settings button:focus-visible,#erp-settings a:focus-visible,#erp-settings select:focus-visible,#erp-settings input:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+.erp-settings-header{padding:25px 28px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:16px}
+.erp-settings-kicker{color:var(--muted);font-size:10px;letter-spacing:.14em;font-weight:700;margin:0 0 6px}
+#erp-settings-title{font-size:25px;margin:0;letter-spacing:-.7px}
+.erp-close{border:1px solid var(--line);background:var(--surface-2);color:var(--text);border-radius:50%;width:38px;height:38px;flex-shrink:0}
+.erp-settings-body{padding:0 28px 24px}.erp-settings-nav{padding:17px 0;border-bottom:1px solid var(--line)}
+.erp-settings-nav a{display:inline-block;color:var(--text);text-decoration:none;font-size:13px;font-weight:700;border-bottom:3px solid var(--primary);padding:8px 14px;background:var(--surface-2);border-radius:8px 8px 0 0}
+.erp-section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 20px}
+.erp-section-heading h3{margin:0 0 7px;font-size:21px;letter-spacing:-.5px}.erp-section-heading p{font-size:12px;color:var(--muted);margin:0;line-height:1.6}
+.erp-active-pill{font-size:11px;white-space:nowrap;border:1px solid var(--line);padding:7px 10px;border-radius:100px;color:var(--text);background:var(--surface-2)}
+.erp-theme-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.erp-theme-card{display:flex;flex-direction:column;min-width:0;text-align:left;border:1px solid var(--line);border-radius:13px;padding:7px;background:var(--surface);color:var(--text);position:relative;transition:border-color .15s,box-shadow .15s}
+.erp-theme-card:hover{border-color:var(--primary);box-shadow:0 3px 14px #0001}.erp-theme-card[aria-pressed=true]{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary)}
+.erp-theme-card strong{font-size:12px;display:block;margin:10px 4px 5px}.erp-theme-desc{font-size:10px;color:var(--muted);line-height:1.5;display:block;margin:0 4px 5px;min-height:45px}
+.erp-card-state{font-size:10px;display:block;margin:6px 4px 3px;font-weight:700;color:var(--text)}
+.erp-preview{height:84px;border-radius:8px;overflow:hidden;display:grid;grid-template-columns:24% 1fr;background:var(--preview-bg);width:100%;color:var(--preview-primary);pointer-events:none;border:1px solid #8883}
+.erp-preview-side{background:var(--preview-side);padding:8px 4px;display:flex;flex-direction:column;gap:5px;align-items:center}.erp-preview-side i{height:3px;width:75%;background:var(--preview-primary);opacity:.6;border-radius:2px}
+.erp-preview-main{padding:9px 7px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:7px 20px 22px;gap:5px}.erp-preview-title{grid-column:1/-1;background:var(--preview-primary);width:65%;border-radius:3px;opacity:.85}.erp-preview-tile{background:var(--preview-surface);border:1px solid var(--preview-primary);border-radius:3px;opacity:.75}.erp-preview-chart{grid-column:1/-1;display:flex;gap:4px;align-items:end;border-bottom:1px solid #8884}.erp-preview-chart i{width:15%;background:var(--preview-primary);border-radius:2px 2px 0 0}.erp-preview-chart i:nth-child(2n){background:var(--preview-secondary)}
+.erp-options{border:1px solid var(--line);border-radius:13px;margin:24px 0 0;padding:16px;display:flex;align-items:end;gap:18px;flex-wrap:wrap}.erp-options legend{padding:0 7px;font-size:12px;font-weight:700}.erp-options label{display:flex;flex-direction:column;gap:7px;font-size:11px;flex:1;min-width:150px}.erp-options select{background:var(--surface-2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px;max-width:100%}.erp-options .erp-effects-label{flex-direction:row;align-items:center;align-self:center}.erp-options input{accent-color:var(--primary);width:16px;height:16px}
+.erp-settings-help{color:var(--muted);font-size:11px;line-height:1.6;margin:12px 0 0}.erp-settings-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 28px;background:var(--surface-2);border-top:1px solid var(--line)}.erp-settings-footer p{font-size:11px;margin:0;line-height:1.5}.erp-reset{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:11px!important;white-space:nowrap}
+/* Layout and density adapters change CSS only, keeping node order and listeners. */
+html[data-erp-layout=top] .app{display:block}
+html[data-erp-layout=top] .sidebar{position:relative;width:100%;height:auto;display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;padding:12px 20px;gap:10px}
+html[data-erp-layout=top] .sidebar .brand{padding:0 16px 0 0}
+html[data-erp-layout=top] .sidebar .nav{flex-direction:row;flex-wrap:wrap}
+html[data-erp-layout=top] .sidebar .side-section{display:none}
+html[data-erp-layout=top] .sidebar .side-aurora-card{margin:0;max-width:270px}
+html[data-erp-layout=top] .sidebar .side-card{margin:0 0 0 auto;min-width:160px}
+html[data-erp-layout=top] .brand-title,html[data-erp-layout=top] .brand-sub,html[data-erp-layout=top] .nav-btn span:not(.nav-icon){display:inline}
+html[data-erp-density=compact] .table td,html[data-erp-density=compact] .table th{padding:7px 9px}
+html[data-erp-density=compact] .panel-body,html[data-erp-density=compact] .kpi{padding:12px}
+html[data-erp-density=compact] .control{padding:7px 9px}
+html[data-erp-density=comfortable] .table td,html[data-erp-density=comfortable] .table th{padding:16px 12px}
+html[data-erp-density=comfortable] .panel-body,html[data-erp-density=comfortable] .kpi{padding:22px}
+html[data-erp-density=comfortable] .control{padding:13px 12px}
+#erp-theme-decor{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.erp-theme-particle{position:absolute;font-size:18px;opacity:.25;animation:erp-drift 9s ease-in-out infinite alternate}
+@keyframes erp-drift{from{transform:translateY(-15px) rotate(-8deg)}to{transform:translateY(30px) rotate(12deg)}}
+html[data-erp-theme=cyberpunk] #erp-theme-decor{background-image:linear-gradient(#00f3ff09 1px,transparent 1px),linear-gradient(90deg,#00f3ff09 1px,transparent 1px);background-size:44px 44px}
+html[data-erp-effects=false] #erp-theme-decor,html[data-erp-effects=false] .cute-bg,html[data-erp-effects=false] .cute-heart,html[data-erp-effects=false] .cute-star{display:none!important}
+html[data-erp-effects=false] .unicorn-mascot{animation:none!important}
+html[data-erp-effects=false] body::after{display:none!important}
+html[data-erp-effects=false] .app *,html[data-erp-effects=false] .app *::before,html[data-erp-effects=false] .app *::after{animation:none!important}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.cute-heart,.cute-star{display:none!important}}
+@media(min-width:901px){html[data-erp-layout=side] .app{display:grid;grid-template-columns:var(--sidebar,272px) minmax(0,1fr)}html[data-erp-layout=side] .sidebar{width:auto}html[data-erp-layout=side] .brand-title,html[data-erp-layout=side] .brand-sub,html[data-erp-layout=side] .nav-btn span:not(.nav-icon){display:block}html[data-erp-layout=side] .nav-btn{justify-content:flex-start}}
+@media(max-width:1180px){.top-actions{flex-wrap:wrap}.erp-theme-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* Legacy files hid all navigation between 761 and 900px; keep it reachable. */
+@media(max-width:900px){.sidebar,html[data-erp-layout=top] .sidebar{position:relative;display:block;width:100%;height:auto;padding:12px}.sidebar .brand{display:none}.sidebar .side-card,.sidebar .side-section,.sidebar .side-aurora-card{display:none}.sidebar .nav,html[data-erp-layout=top] .sidebar .nav{display:flex;flex-direction:row;flex-wrap:nowrap;overflow:auto}.nav-btn{flex-shrink:0;white-space:nowrap}.nav-btn span:not(.nav-icon){display:inline}.app{display:block}.topbar{flex-wrap:wrap}.main{min-width:0}.erp-theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:540px){#erp-settings{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);border-radius:16px}.erp-settings-header{padding:18px}.erp-settings-body{padding:0 16px 18px}.erp-theme-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.erp-section-heading{align-items:flex-start;flex-direction:column;gap:9px}.erp-settings-footer{padding:14px 16px;align-items:flex-start;flex-direction:column}.erp-options{gap:12px}.erp-preview{height:80px}.top-actions{flex-wrap:wrap}.top-actions .btn{white-space:nowrap}}
+html[data-erp-theme] :is(.panel,.kpi,.control,.table td){transition:background-color .16s ease,color .16s ease,border-color .16s ease}
+@media(prefers-reduced-motion:reduce){html[data-erp-theme] :is(.panel,.kpi,.control,.table td){transition:none!important}}
+

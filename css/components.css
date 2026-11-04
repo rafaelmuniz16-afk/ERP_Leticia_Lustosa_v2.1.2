@@ -1,0 +1,124 @@
+/* Static component presentation extracted without changing property values. */
+.radar-section-label{margin-top:10px}
+#statusProgress{width:0%}
+#btnCancel{display:none}
+.analytics-section{margin-top:16px}
+.sort-field{min-width:110px}
+.page-size-field{min-width:95px}
+.server-confirmation-note{font-size:11px;color:var(--muted);margin-top:5px}
+/* ==== BOTÃO MINIMALISTA DE VOZ ==== */
+.btn-voice-minimal {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+.btn-voice-minimal svg {
+  width: 20px;
+  height: 20px;
+}
+.btn-voice-minimal:hover {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+}
+
+/* ==== POP-UP FLUTUANTE DE VOZ (SIRI STYLE) ==== */
+.aurora-voice-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.aurora-voice-backdrop.active {
+  display: flex;
+}
+.aurora-voice-card {
+  background: #ffffff;
+  border-radius: 28px;
+  width: 90%;
+  max-width: 380px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.aurora-voice-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #f1f5f9;
+  border: none;
+  color: #64748b;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aurora-voice-orb {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.aurora-voice-core {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #8b5cf6, #d946ef);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(217, 70, 239, 0.5);
+  z-index: 2;
+}
+.aurora-voice-pulse {
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.35);
+  animation: auroraPulse 1.4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+@keyframes auroraPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.aurora-voice-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.aurora-voice-transcript {
+  font-size: 14px;
+  color: #64748b;
+  min-height: 40px;
+  line-height: 1.5;
+  margin: 0;
+}

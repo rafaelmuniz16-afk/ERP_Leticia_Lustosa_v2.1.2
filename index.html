@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP Leticia Lustosa • Encerramentos 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<link rel="stylesheet" href="css/themes/original.css" data-erp-stylesheet="original">
+<link rel="stylesheet" href="css/themes/claro.css" data-erp-stylesheet="claro">
+<link rel="stylesheet" href="css/themes/escuro.css" data-erp-stylesheet="escuro">
+<link rel="stylesheet" href="css/themes/natal.css" data-erp-stylesheet="natal">
+<link rel="stylesheet" href="css/themes/ano-novo.css" data-erp-stylesheet="ano-novo">
+<link rel="stylesheet" href="css/themes/pascoa.css" data-erp-stylesheet="pascoa">
+<link rel="stylesheet" href="css/themes/festa-junina.css" data-erp-stylesheet="festa-junina">
+<link rel="stylesheet" href="css/themes/halloween.css" data-erp-stylesheet="halloween">
+<link rel="stylesheet" href="css/themes/terror.css" data-erp-stylesheet="terror">
+<link rel="stylesheet" href="css/themes/cyberpunk.css" data-erp-stylesheet="cyberpunk">
+<link rel="stylesheet" href="css/themes/glassy-crm.css?v=20261016-glassy-fix1" data-erp-stylesheet="glassy-crm">
+<link id="erp-theme-font" rel="stylesheet" disabled>
+<script src="js/themes/registry.js?v=5.1.0-integrated"></script>
+<script src="js/themes/glassy-registry.js?v=20261016-glassy-fix1"></script>
+<script src="js/themes/chart-palette.js?v=2.1.2-inativacao"></script>
+<script src="js/themes/assets.js?v=20261016-glassy-fix1"></script>
+<script src="js/themes/boot.js"></script>
+<link rel="stylesheet" href="css/settings.css">
+<link rel="stylesheet" href="css/compatibility.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/aurora-live.css">
+<link rel="stylesheet" href="css/aurora-integration.css?v=3.0.0">
+<link rel="stylesheet" href="css/aurora-achievements.css?v=2.0.1-ui">
+<link rel="stylesheet" href="css/whatsapp-summary.css">
+<link rel="stylesheet" href="css/export-center.css">
+<link rel="stylesheet" href="css/work-center.css">
+<link rel="stylesheet" href="css/glassy-carousel.css">
+<link rel="stylesheet" href="css/aurora-autonomy.css?v=4.0.0">
+<link rel="stylesheet" href="css/aurora-refinement.css?v=5.0.0">
+<link rel="stylesheet" href="css/refinamentos-fase4.css?v=5.1.0">
+  <link rel="stylesheet" href="css/inativacao-v2.1.2.css?v=2.1.2-inativacao">
+</head>
+<body>
+<div id="erp-theme-visuals"></div>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 14.2 9.8 21.2 12l-7 2.2-2.2 7-2.2-7-7-2.2 7-2.2L12 2.8Z" fill="currentColor"/></svg></div>
+      <div><div class="brand-title">Leticia Lustosa</div><div class="brand-sub">ERP • Encerramentos 2026</div></div>
+    </div>
+
+    <div class="side-section">Navegação</div>
+    <nav class="nav">
+      <button class="nav-btn active" data-target="dashboard"><span class="nav-icon">⌂</span><span>Dashboard</span></button>
+      <button class="nav-btn" data-target="cadastro"><span class="nav-icon">＋</span><span>Novo registro</span></button>
+      <button class="nav-btn" data-target="historico"><span class="nav-icon">☷</span><span>Histórico</span></button>
+      <button class="nav-btn" id="btnNavAuditoria"><span class="nav-icon">▤</span><span>Auditoria</span></button>
+      <button class="nav-btn" id="openAiFromNav"><span class="nav-icon">✦</span><span>Aurora AI</span></button>
+<button type="button" class="nav-btn" id="erp-open-settings" aria-haspopup="dialog" aria-controls="erp-settings" title="Configurações"><span class="nav-icon" aria-hidden="true">⚙</span><span>Configurações</span></button>
+    </nav>
+
+    <div class="side-card">
+      <div class="side-card-title">Conexão com a nuvem</div>
+      <div class="sync-line"><span><i class="status-dot" id="sideDot"></i><span id="sideStatus">Verificando…</span></span><span id="sideCount">0</span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar" id="dashboard">
+      <div>
+        <div class="eyebrow">Painel operacional</div>
+        <h1 class="page-title">Encerramentos 2026</h1>
+        <p class="page-subtitle">Acompanhamento de produtividade e resultados.</p>
+      </div>
+      <div class="top-actions"><button type="button" class="btn btn-soft" id="erp-open-settings-top" aria-haspopup="dialog" aria-controls="erp-settings">⚙ Configurações</button>
+        <button class="btn btn-soft" id="btnRefresh">↻ Atualizar</button>
+        <button class="btn btn-primary" id="btnAiTop">✦ Falar com Aurora</button>
+      </div>
+    </div>
+
+    <section class="filters">
+      <div class="field meta-box"><label>Mês de análise</label><select class="control" id="filterMonth"></select></div>
+      <div class="field meta-box"><label>Meta do mês</label><input class="control" id="metaInput" type="number" min="0" step="1"></div>
+      <div class="field"><label for="filterTipo">Tipo</label><select class="control" id="filterTipo"><option>Todos</option><option>Ônus</option><option>Acordo</option><option>Êxito</option><option>Inativação</option></select></div>
+      <div class="field"><label for="filterEncerrado">Panjud</label><select class="control" id="filterEncerrado"><option>Todos</option><option>Sim</option><option>Não</option></select></div>
+      <div class="field grow history-smart-field"><label for="searchInput">Pesquisa inteligente</label><input class="control" id="searchInput" type="search" autocomplete="off" placeholder="ID ou número do processo" title="Pesquise um ou vários IDs e processos"></div>
+    </section>
+
+    <section class="status" id="statusBanner">
+      <div class="status-left"><span class="status-ring"></span><div><div class="status-title" id="statusTitle">Carregando status…</div><div class="status-sub" id="statusSub">Calculando desempenho da meta.</div></div></div>
+      <div class="progress"><div id="statusProgress" class="status-progress-initial"></div></div>
+    </section>
+
+    <section class="grid kpi-grid">
+      <div class="kpi tone-info"><div class="kpi-icon">◎</div><div class="kpi-label">Encerramentos</div><div class="kpi-value" id="m5_quant">0</div><div class="kpi-note">Quantidade cadastrada no mês</div></div>
+      <div class="kpi tone-warning"><div class="kpi-icon">↯</div><div class="kpi-label">Recusados Panjud</div><div class="kpi-value" id="m8_recusados">0</div><div class="kpi-note">Retirados do total efetivo</div></div>
+      <div class="kpi tone-success"><div class="kpi-icon">✓</div><div class="kpi-label">Encerramentos reais</div><div class="kpi-value" id="m7_reais">0</div><div class="kpi-note">Somente Panjud = Sim</div></div>
+      <div class="kpi tone-danger"><div class="kpi-icon">!</div><div class="kpi-label">Falta para a meta real</div><div class="kpi-value" id="falta_reais">0</div><div class="kpi-note" id="meta_diaria">0 casos/dia</div></div>
+    </section>
+
+    <section class="side-aurora-card" id="sideAuroraCard" aria-labelledby="auroraLiveTitle">
+      <header class="side-aurora-head">
+        <div class="side-aurora-avatar" aria-hidden="true">✦</div>
+        <h2 class="side-aurora-name" id="auroraLiveTitle">Aurora Live</h2>
+        <span class="side-aurora-tag">RADAR</span>
+        <span class="aurora-live-date" id="auroraLiveDate">Acompanhando seu dia</span>
+        <button type="button" id="erpSummaryOpen" class="aurora-live-button" aria-label="Copiar resumo de produtividade" title="Copiar resumo de produtividade" aria-haspopup="dialog" aria-controls="erpSummaryDialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5V3h11v14h-2M4 7h11v14H4z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Copiar Resumo</span></button>
+        <button type="button" id="erpWorkOpen" class="aurora-live-button" aria-label="Abrir Central de Trabalho" title="Consultar registros e ações rápidas" aria-haspopup="dialog" aria-controls="erpWorkDialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v14H4zM9 7V3h6v4M4 12h16M10 12v3h4v-3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>Central de Trabalho</span></button>
+        <button type="button" id="erpExportOpen" class="aurora-live-button" aria-label="Abrir Central de Exportação" title="Exportar dados para Excel ou PDF" aria-haspopup="dialog" aria-controls="erpExportDialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 3H5v18h14V9l-6-6zm0 0v6h6M12 11v7m-3-3 3 3 3-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Exportar Dados</span></button>
+      </header>
+      <p class="aurora-live-subtitle">Seu progresso, sua referência. O Radar acompanha o mês selecionado; seu desempenho acompanha hoje.</p>
+      <div class="aurora-live-grid">
+        <section class="aurora-live-block" aria-labelledby="auroraPowerTitle">
+          <h3 class="aurora-live-heading" id="auroraPowerTitle">Power Level — Hoje</h3>
+          <div class="aurora-live-power-value"><strong class="aurora-live-score" id="auroraPower">—</strong><span class="aurora-live-power-unit">pontos</span></div>
+          <p class="aurora-live-note aurora-live-power-scale">100 pontos = sua média · pode superar 100</p>
+          <div class="aurora-live-progress" id="auroraPowerBar" role="progressbar" aria-label="Progresso até a sua média: 100 pontos" aria-describedby="auroraPowerBarNote" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+          <p class="aurora-live-note aurora-live-bar-note" id="auroraPowerBarNote">Barra completa ao alcançar a média</p>
+          <p class="aurora-live-relation" id="auroraPowerRelation">Histórico em formação</p>
+          <p class="aurora-live-note" id="auroraPowerBaseline">Encerramentos de hoje em relação ao seu histórico</p>
+        </section>
+        <section class="aurora-live-block aurora-live-personal" aria-labelledby="auroraPersonalTitle">
+          <h3 class="aurora-live-heading" id="auroraPersonalTitle">Leticia vs. Leticia</h3>
+          <dl class="aurora-live-comparison">
+            <div><dt>Encerramentos hoje</dt><dd id="auroraTodayCount">0</dd></div>
+            <div><dt id="auroraBestLabel">Melhor dia do ano</dt><dd id="auroraPersonalBest">0</dd></div>
+          </dl>
+          <div class="aurora-live-progress" id="auroraRecordBar" role="progressbar" aria-label="Hoje em relação ao melhor dia" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+          <p class="aurora-live-note" id="auroraRecordGap">Construindo seu histórico.</p>
+          <p class="aurora-live-note" id="auroraDailyPace"></p>
+        </section>
+        <section class="aurora-live-block aurora-live-observation" aria-labelledby="auroraObserveTitle">
+          <h3 class="aurora-live-heading" id="auroraObserveTitle">Aurora observa</h3>
+          <span class="aurora-live-event-label" id="auroraObservationLabel">Acompanhando o dia</span>
+          <p class="aurora-live-comment" id="auroraObservation" role="status" aria-live="polite" aria-atomic="true">Vou acompanhar seu progresso por aqui.</p>
+          <p class="aurora-live-fact" id="auroraObservationFact" hidden></p>
+          <p class="aurora-live-note" id="auroraObservationSource">Leitura local do ERP</p>
+          <div class="aurora-autonomy-actions" id="auroraAutonomySuggestion" hidden><button type="button" class="btn btn-soft" id="auroraAutonomyAction"></button><button type="button" class="btn btn-soft" id="auroraAutonomyDismiss" aria-label="Ignorar sugestão">×</button></div>
+          <div id="auroraFeedback" class="aurora-feedback" role="group" aria-label="Utilidade desta observação" hidden>
+            <button type="button" class="btn btn-soft" id="auroraFeedbackUseful" aria-pressed="false">Útil</button>
+            <button type="button" class="btn btn-soft" id="auroraFeedbackNotUseful" aria-pressed="false">Não útil</button>
+            <label id="auroraFeedbackReasonLabel" hidden>Motivo opcional<select id="auroraFeedbackReason"><option value="">Sem motivo</option><option value="repetitive">Repetitiva</option><option value="low_relevance">Pouco relevante</option><option value="generic">Genérica</option><option value="long">Muito longa</option><option value="out_of_context">Fora de contexto</option><option value="apparently_incorrect">Aparentemente incorreta</option><option value="other">Outro</option></select></label>
+          </div>
+          <p id="auroraFeedbackStatus" class="aurora-live-note" role="status" hidden></p>
+          <p class="aurora-live-note" id="auroraAutonomyStatus" role="status" hidden></p>
+        </section>
+        <section class="aurora-live-block aurora-live-radar" aria-labelledby="auroraRadarTitle">
+          <h3 class="aurora-live-heading" id="auroraRadarTitle">Radar Financeiro</h3>
+          <span class="aurora-live-note" id="auroraRadarMonth"></span>
+          <div class="side-aurora-msg" id="sideAuroraMsg">A calcular indicadores operacionais... 📊</div>
+          <div class="aurora-live-radar-actions">
+            <button type="button" class="aurora-live-button" id="auroraRadarNext" aria-label="Próximo diagnóstico financeiro">Próximo →</button>
+            <button type="button" class="aurora-live-button" id="auroraRadarPause" aria-pressed="false" aria-label="Pausar ou retomar diagnósticos automáticos">Pausar</button>
+            <button type="button" class="aurora-live-button" id="auroraFinanceAnalyze">✦ Analisar</button>
+            <span id="auroraRadarPosition">1 / 15</span>
+          </div>
+        </section>
+        <section class="aurora-live-block" aria-labelledby="auroraTrendTitle">
+          <h3 class="aurora-live-heading" id="auroraTrendTitle">Evolução · últimos 7 dias</h3>
+          <ol class="aurora-live-trend" id="auroraTrend" aria-label="Encerramentos por data de finalização"></ol>
+          <p class="aurora-live-note" id="auroraTrendDelta"></p>
+          <p class="aurora-live-note" id="auroraStreak"></p>
+        </section>
+        <section class="aurora-live-block aa-summary" id="auroraAchievements" aria-labelledby="auroraAchievementsTitle">
+          <h3 class="aurora-live-heading" id="auroraAchievementsTitle">Aurora Achievements 2.0</h3>
+          <div id="aa-current-heading" class="aa-level-heading"></div>
+          <div id="aa-current-progress" class="aa-track aa-summary-progress" role="progressbar" aria-label="Missões concluídas do nível atual" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"></div>
+          <p id="aa-notice" class="aa-announcement" role="status" aria-live="polite" hidden></p>
+          <button type="button" class="aurora-live-catalog-link" id="auroraAchievementsOpen" aria-haspopup="dialog" aria-controls="auroraAchievementsDialog">Ver Missões <span aria-hidden="true">↗</span></button>
+        </section>
+      </div>
+      <details class="aurora-live-method">
+        <summary>Como ler seus indicadores</summary>
+        <p>Power Level = encerramentos de hoje ÷ média dos últimos 20 dias anteriores com encerramentos × 100. A comparação exige pelo menos três dias, considera o ano atual e inclui todos os tipos e situações do Panjud. A pontuação é arredondada; a variação percentual usa a razão sem arredondamento. A barra completa em 100 pontos; o índice pode ultrapassar essa referência.</p>
+        <p>Hoje usa a data de finalização, não o horário do cadastro. O recorde compara hoje aos dias anteriores do ano. As barras mostram os últimos sete dias, incluindo hoje; a evolução percentual compara duas semanas completas, sem incluir hoje. Dias sem registros representam zero encerramentos registrados, não ausência de trabalho.</p>
+        <p>O ritmo diário usa os confirmados no Panjud, a meta vigente do mês atual e o saldo antes de hoje, dividido pelos dias de segunda a sexta restantes. Feriados não são descontados. O Radar Financeiro mantém suas regras e o mês de análise original.</p>
+        <p>Aurora comenta eventos relevantes após a confirmação dos dados: no máximo três gerações por dia, com intervalo de 45 minutos. A leitura local permanece disponível quando a IA não responde. Marcos refletem o histórico atual e podem mudar após uma correção ou exclusão.</p>
+        <p id="auroraDateNote"></p>
+      </details>
+    </section>
+
+    <section class="grid content-grid" id="cadastro">
+      <div class="panel">
+        <div class="panel-head">
+          <div><h2 class="panel-title"><span class="section-cute">Produção e desempenho</span></h2><div class="panel-sub">Distribuição dos encerramentos no mês selecionado.</div></div>
+        </div>
+        <div class="panel-body">
+          <div class="grid analytics">
+            <div class="chart-box erp-types-chart">
+              <div class="erp-donut-scene">
+                <div class="chart-wrap">
+                  <canvas id="tiposChart" aria-label="Gráfico de proporção entre Ônus, Acordo, Êxito e Inativação" role="img"></canvas>
+                  <div class="erp-donut-core" aria-hidden="true">
+                    <span class="erp-donut-eyebrow">PRODUÇÃO</span>
+                    <strong id="erpDonutTotal">0</strong>
+                    <span class="erp-donut-caption">encerramentos</span>
+                  </div>
+                </div>
+                <div class="erp-donut-footnote"><span class="erp-donut-pulse" aria-hidden="true"></span>Distribuição do mês</div>
+              </div>
+            </div>
+            <div class="summary-list erp-type-insights" id="erpTypeInsights" aria-label="Indicadores por tipo">
+              <div class="summary-row erp-type-row" data-erp-category="onus">
+                <div class="erp-type-line"><span class="erp-type-label"><span class="erp-type-dot" aria-hidden="true"></span>Ônus</span><span class="erp-type-stats"><strong id="count_onus">0</strong><small id="erpPctOnus">0%</small></span></div>
+                <div class="erp-type-track" aria-hidden="true"><span id="erpBarOnus"></span></div>
+              </div>
+              <div class="summary-row erp-type-row" data-erp-category="acordo">
+                <div class="erp-type-line"><span class="erp-type-label"><span class="erp-type-dot" aria-hidden="true"></span>Acordo</span><span class="erp-type-stats"><strong id="count_acordo">0</strong><small id="erpPctAcordo">0%</small></span></div>
+                <div class="erp-type-track" aria-hidden="true"><span id="erpBarAcordo"></span></div>
+              </div>
+              <div class="summary-row erp-type-row" data-erp-category="exito">
+                <div class="erp-type-line"><span class="erp-type-label"><span class="erp-type-dot" aria-hidden="true"></span>Êxito</span><span class="erp-type-stats"><strong id="count_exito">0</strong><small id="erpPctExito">0%</small></span></div>
+                <div class="erp-type-track" aria-hidden="true"><span id="erpBarExito"></span></div>
+              </div>
+              <div class="summary-row erp-type-row" data-erp-category="inativacao">
+                <div class="erp-type-line"><span class="erp-type-label"><span class="erp-type-dot" aria-hidden="true"></span>Inativação</span><span class="erp-type-stats"><strong id="count_inativacao">0</strong><small id="erpPctInativacao">0%</small></span></div>
+                <div class="erp-type-track" aria-hidden="true"><span id="erpBarInativacao"></span></div>
+              </div>
+              <div class="erp-type-totals">
+                <div class="summary-row summary-highlight erp-type-total"><span>Encerramentos totais</span><strong id="m6_totais">0</strong></div>
+                <div class="summary-row erp-type-remaining"><span>Faltam em quantidade</span><strong id="falta_quant">0</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel form-panel">
+        <div class="panel-head">
+          <div><h2 class="panel-title" id="formTitle">Novo registro</h2><div class="panel-sub">A alteração só aparece como salva após confirmação da nuvem.</div></div>
+          <button class="btn btn-soft cancel-button-initial" id="btnCancel">Cancelar</button>
+        </div>
+        <div class="panel-body">
+          <form id="processForm">
+            <div class="grid two erp-case-id-grid"><div class="form-group"><label for="idCaso">ID do caso</label><input id="idCaso" class="control" required></div><div class="form-group"><label for="numProcesso">Número do processo <span class="erp-field-help-icon" title="Padrão CNJ: 20 dígitos; formatação automática." aria-hidden="true">ⓘ</span></label><input id="numProcesso" class="control" inputmode="numeric" placeholder="0000000-00.0000.0.00.0000" aria-describedby="cnjHelp" required><small id="cnjHelp" class="cnj-help erp-visually-hidden">Padrão CNJ: 20 dígitos. A formatação é automática.</small></div></div>
+            <div class="grid two"><div class="form-group"><label>Tipo</label><select id="tipoEncerramento" class="control" required><option>Ônus</option><option>Acordo</option><option>Êxito</option><option>Inativação</option></select></div><div class="form-group"><label>Data finalizado</label><input id="dataEncerramento" type="date" class="control" required></div></div>
+            <div class="grid two"><div class="form-group"><label>Mês de referência</label><select id="mesReferenciaForm" class="control" required></select></div><div class="form-group"><label>Encerrado no Panjud?</label><select id="panjud" class="control" required><option>Não</option><option>Sim</option></select></div></div>
+            <div class="grid two"><div class="form-group"><label>Recusado no Panjud?</label><select id="recusado" class="control" required><option>Não</option><option>Sim</option></select></div><div class="form-group"><label>Observações</label><input id="observacoes" class="control" maxlength="500"></div></div>
+            <div class="form-actions"><button class="btn btn-primary" id="btnSubmit" type="submit">✓ Salvar registro</button><button class="btn btn-soft" type="button" id="btnReset">Limpar</button></div>
+            <div class="hint">Dica Turbo: use <b>Enter</b> para navegar entre os campos ou <b>Ctrl + Enter</b> para salvar a qualquer momento! ⚡</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid analytics analytics-section">
+      <div class="panel">
+        <div class="panel-head"><div><h2 class="panel-title"><span class="section-cute">Evolução diária</span></h2><div class="panel-sub">Quantidade de encerramentos por dia.</div></div></div>
+        <div class="panel-body"><div class="chart-box"><div class="chart-wrap"><canvas id="linhaChart"></canvas></div></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div><h2 class="panel-title"><span class="section-cute">Atingimento da meta</span></h2><div class="panel-sub">Quantidade, totais e reais.</div></div></div>
+        <div class="panel-body">
+          <div class="summary-list">
+            <div class="summary-row"><span>Quantidades</span><strong id="labelQuant">0 / 0</strong></div>
+            <div class="summary-row"><span>Totais</span><strong id="labelTotais">0 / 0</strong></div>
+            <div class="summary-row summary-highlight"><span>Reais</span><strong id="labelReais">0 / 0</strong></div>
+            <div class="summary-row"><span>Meta diária restante</span><strong id="meta_diaria_2">0 casos/dia</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid finance-grid">
+      <div class="panel finance-card">
+        <div class="panel-head"><div><h2 class="panel-title"><span class="section-cute">Ganho real atual</span></h2><div class="panel-sub">Faixa calculada pela % da meta real.</div></div></div>
+        <div class="panel-body">
+          <div class="money-row"><span>Ônus</span><strong id="val_real_onus">R$ 0,00</strong></div>
+          <div class="money-row"><span>Acordo</span><strong id="val_real_acordo">R$ 0,00</strong></div>
+          <div class="money-row"><span>Êxito</span><strong id="val_real_exito">R$ 0,00</strong></div>
+          <div class="money-row"><span>Inativação</span><strong id="val_real_inativacao">R$ 0,00</strong></div>
+          <div class="money-row money-total"><span>Valor final</span><strong id="val_real_total">R$ 0,00</strong></div>
+          <div class="erp-finance-targets" aria-live="polite"><div><span>Até 80% da meta</span><strong id="remaining_80">—</strong></div><div><span>Até 90% da meta</span><strong id="remaining_90">—</strong></div></div>
+        </div>
+      </div>
+      <div class="panel finance-card">
+        <div class="panel-head"><div><h2 class="panel-title"><span class="section-cute">Simulação a 100%</span></h2><div class="panel-sub">Referência: 4 / 3 / 2 por tipo.</div></div></div>
+        <div class="panel-body">
+          <div class="money-row"><span>Ônus × R$ 4</span><strong id="val_100_onus">R$ 0,00</strong></div>
+          <div class="money-row"><span>Acordo × R$ 3</span><strong id="val_100_acordo">R$ 0,00</strong></div>
+          <div class="money-row"><span>Êxito × R$ 2</span><strong id="val_100_exito">R$ 0,00</strong></div>
+          <div class="money-row"><span>Inativação × R$ 1</span><strong id="val_100_inativacao">R$ 0,00</strong></div>
+          <div class="money-row money-total"><span>Valor final</span><strong id="val_100_total">R$ 0,00</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel table-panel" id="historico">
+      <div class="panel-head">
+        <div><h2 class="panel-title"><span class="section-cute">Histórico de casos</span></h2><div class="panel-sub">Resultados atualizados pelos filtros do painel. Os campos de período e ordem ficam aqui.</div></div>
+        <div class="table-tools">
+          <div class="field sort-field"><label>Ordem (Data)</label><select class="control" id="sortOrder"><option value="desc">Mais recentes</option><option value="asc">Mais antigos</option></select></div>
+          <div class="field"><label>De (Data)</label><input type="date" class="control" id="dateStart"></div>
+          <div class="field"><label>Até (Data)</label><input type="date" class="control" id="dateEnd"></div>
+          <div class="field page-size-field"><label>Mostrar</label><select class="control" id="pageSize"><option>15</option><option>50</option><option>100</option><option>200</option><option>500</option></select></div>
+        </div>
+      </div>
+      <div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>Processo</th><th>Tipo</th><th>Data</th><th>Mês</th><th>Panjud</th><th>Recusado</th><th>Observações</th><th>Ações</th></tr></thead><tbody id="recordsTable"></tbody></table></div>
+      <div class="pagination"><button class="btn btn-soft" id="btnPrevPage">← Anterior</button><span id="pageInfo">Página 1 de 1</span><button class="btn btn-soft" id="btnNextPage">Próxima →</button></div>
+    </section>
+  </main>
+</div>
+
+<div class="floating-window" id="winAuditoria">
+  <div class="win-header" id="winAuditoriaHeader">
+    <div class="win-title"><span class="section-cute">Diário de Auditoria</span></div>
+    <button type="button" class="win-btn-close" id="btnCloseAuditoria" title="Fechar">×</button>
+  </div>
+  <div class="win-sub">Registro imutável de ações para resguardo e conferência. (Arraste pelo topo ou redimensione na ponta)</div>
+  <div class="win-body table-wrap">
+    <table class="table">
+      <thead><tr><th>Data/Hora</th><th>Ação</th><th>ID do Caso</th><th>Detalhes do Movimento</th></tr></thead>
+      <tbody id="logsTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="ai-drawer" id="aiDrawer" aria-hidden="true">
+  <div class="ai-backdrop" id="aiBackdrop"></div>
+  <aside class="ai-panel">
+    <div class="ai-head">
+      <div class="ai-brand">
+        <div class="ai-logo">✦</div>
+        <div><div class="ai-title">Aurora AI</div><div class="ai-state" id="aiState">Assistente administrativa</div><div class="ai-memory-source" id="aiMemorySource" role="status" aria-live="polite">Memoria_IA: aguardando sincronização</div></div>
+      </div>
+      <div class="ai-tools"><button class="btn btn-soft" id="btnAiKey">⚿</button><button class="btn btn-soft" id="btnAiClose">×</button></div>
+    </div>
+    <div class="ai-body" id="chatMessages"></div>
+    <div class="ai-compose">
+      <div class="compose-wrap">
+        <textarea id="chatInputText" rows="1" placeholder="Ex.: cadastre o caso 123…"></textarea>
+        <!-- SUBSTITUA O BOTÃO DE MICROFONE ANTIGO POR ESTE: -->
+        <button type="button" id="btnVoiceInput" class="btn-voice-minimal" title="Falar com Aurora">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="22"></line>
+          </svg>
+        </button>
+        <button type="button" class="send-btn" id="btnChatSend" aria-label="Enviar mensagem para Aurora">➤</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div class="loading" id="loading">
+  <div class="loading-card"><div class="spinner"></div><strong id="loadingTitle">Sincronizando…</strong><div class="server-confirmation-note">Aguarde a confirmação do servidor.</div></div>
+</div>
+
+<dialog id="auroraAchievementsDialog" aria-labelledby="auroraAchievementsDialogTitle" aria-describedby="auroraAchievementsScope">
+  <header class="aurora-catalog-header">
+    <div><h2 id="auroraAchievementsDialogTitle">Missões da Aurora</h2><p id="auroraAchievementsCount" role="status"></p></div>
+    <button type="button" id="auroraAchievementsClose" aria-label="Fechar jornada de conquistas" autofocus>Fechar <span aria-hidden="true">×</span></button>
+  </header>
+  <div class="aurora-catalog-body" tabindex="0" role="region" aria-label="Catálogo de conquistas">
+    <p id="auroraAchievementsScope">Cinco missões por nível. Consulte seu progresso e explore as 70 etapas da jornada.</p>
+    <div id="aa-journey-heading" class="aa-level-heading"></div>
+    <p id="aa-journey-detail" class="aa-source"></p>
+    <p id="aa-next-title" class="aa-next-title"></p>
+    <p id="aa-journey-notice" class="aa-notice" hidden></p>
+    <div class="aa-navigation">
+      <button type="button" id="aa-prev" aria-label="Nível anterior">←</button>
+      <label for="aa-level-select">Jornada completa · escolher nível<select id="aa-level-select"></select></label>
+      <button type="button" id="aa-next" aria-label="Próximo nível">→</button>
+    </div>
+    <nav id="aa-levels" aria-label="Níveis desta faixa"></nav>
+    <p class="aa-source" id="aa-range"></p>
+    <ul id="auroraAchievementsCatalog" class="aa-missions" aria-label="Missões do nível selecionado"></ul>
+    <p id="aa-level-description" class="aa-source"></p>
+    <label class="aa-preference"><input type="checkbox" id="aa-animations" checked> Animações discretas de conquistas</label>
+    <details class="aa-method"><summary>Critérios e qualidade do histórico</summary>
+      <p class="aa-source" id="auroraAnnualTotal">0 encerramentos no ano</p>
+      <p class="aa-source" id="auroraMonthGoal"></p>
+      <p class="aa-source" id="aa-scope"></p>
+      <p>Usamos a data de finalização válida e não futura, em todos os anos. Dias, meses e anos são civis; cada semana vai de segunda a domingo e é identificada pela data da segunda-feira. O mês de referência e as metas sem histórico anual não definem missões.</p>
+      <p>Confirmado significa Panjud = Sim e recusado = Não. Os tipos reconhecidos são Ônus, Acordo, Êxito e Inativação. Recusas e status conflitantes não contam como confirmação. Cópias de um mesmo _uid são contadas uma vez; se os campos relevantes divergem, essa identidade não entra até a correção. CNJs e IDs de caso repetidos não eliminam registros distintos.</p>
+      <p>A sequência histórica considera segunda a sexta, sem calendário de feriados, férias ou presença. Uma lacuna é apenas uma data sem produção registrada. Missões de tipos e sequências oferecem alternativas de constância. OU usa a melhor alternativa; E exige todas as condições e mostra o menor percentual.</p>
+      <p>Correções e exclusões podem reduzir o nível comprovado. O estado auxiliar guarda apenas preferências e avisos já apresentados; não concede conquistas. Se recuperar dados já reconhecidos, o aviso de subida não se repete neste navegador.</p>
+      <p id="aa-quality"></p>
+    </details>
+  </div>
+</dialog>
+
+<dialog id="erp-settings" aria-labelledby="erp-settings-title" aria-describedby="erp-settings-description">
+  <header class="erp-settings-header">
+    <div><p class="erp-settings-kicker">SEU ESPAÇO DE TRABALHO</p><h2 id="erp-settings-title">Configurações</h2></div>
+    <button type="button" class="erp-close" id="erp-close-settings" aria-label="Fechar configurações">✕</button>
+  </header>
+  <div class="erp-settings-body">
+    <nav class="erp-settings-nav" aria-label="Seções das configurações"><a href="#erp-themes-section" aria-current="page">◐ Temas</a></nav>
+    <section id="erp-themes-section" aria-labelledby="erp-themes-title">
+      <div class="erp-section-heading"><div><h3 id="erp-themes-title">Um ERP. Onze identidades.</h3><p id="erp-settings-description">Escolha o visual do seu espaço. A mudança é aplicada na hora.</p></div><span class="erp-active-pill" id="erp-active-label"></span></div>
+      <div class="erp-theme-grid" id="erp-theme-grid" role="group" aria-label="Temas disponíveis"></div>
+      <fieldset class="erp-options"><legend>Organização da tela</legend>
+        <label>Menu principal<select id="erp-layout"><option value="auto">Padrão do tema</option><option value="side">Lateral</option><option value="top">Superior</option></select></label>
+        <label>Densidade<select id="erp-density"><option value="auto">Padrão do tema</option><option value="compact">Compacta</option><option value="comfortable">Confortável</option></select></label>
+        <label class="erp-effects-label"><input type="checkbox" id="erp-effects"> Efeitos decorativos</label></fieldset>
+      <fieldset class="erp-options aurora-autonomy-options"><legend>Aurora Autonomy</legend>
+        <label><input type="checkbox" id="auroraProactive" checked> Aurora Proativa <small>Novas observações locais quando houver informação relevante.</small></label>
+        <label><input type="checkbox" id="auroraSuggestions" checked> Sugestões contextuais <small>Consultas preparadas pela Aurora, abertas somente após seu clique.</small></label>
+        <label><input type="checkbox" id="auroraProactiveAI"> Geração proativa com IA <small>Autoriza novas gerações, compartilhando o limite do Observa: até 3 por dia, com 45 minutos de intervalo.</small></label>
+        <label for="auroraRelevance">Relevância mínima<select id="auroraRelevance" class="control"><option value="moderate">Moderada</option><option value="high">Alta e marcos</option></select></label>
+        <p id="auroraAutonomyPreferencesStatus" class="erp-settings-help" role="status">As análises solicitadas manualmente continuam disponíveis. Nenhum registro será alterado pela autonomia.</p>
+      </fieldset>
+      <fieldset class="erp-options aurora-autonomy-options"><legend>Comunicação da Aurora</legend>
+        <label for="auroraStyle">Estilo das análises<select id="auroraStyle"><option value="objective">Objetiva</option><option value="balanced">Equilibrada</option><option value="analytical">Analítica</option></select><small>A profundidade depende das evidências disponíveis.</small></label>
+        <label><input type="checkbox" id="auroraUseFeedback" checked> Usar feedback na priorização<small>Avaliações recorrentes ajustam a ordem das observações moderadas. Marcos importantes são preservados.</small></label>
+        <button type="button" class="btn btn-soft" id="auroraResetAdaptation">Redefinir priorização aprendida</button>
+        <button type="button" class="btn btn-soft" id="auroraEraseFeedback">Apagar avaliações…</button>
+        <p id="auroraRefinementStatus" class="erp-settings-help" role="status">As avaliações ficam neste navegador. Ausência de avaliação não conta como rejeição.</p>
+      </fieldset>
+      <p class="erp-settings-help">Preferência salva neste navegador. No celular, o menu se adapta ao espaço disponível.</p>
+    </section>
+  </div>
+  <footer class="erp-settings-footer"><p id="erp-theme-status" role="status" aria-live="polite" aria-atomic="true"></p><button type="button" class="erp-reset" id="erp-reset-theme">Restaurar Original</button></footer>
+</dialog>
+
+<dialog id="auroraEraseDialog" aria-labelledby="auroraEraseTitle" class="aurora-erase-dialog"><h3 id="auroraEraseTitle">Apagar avaliações da Aurora?</h3><p>Esta ação apaga somente as avaliações de utilidade. Não pode ser desfeita.</p><button type="button" class="btn btn-soft" id="auroraCancelErase">Cancelar</button><button type="button" class="btn" id="auroraConfirmErase">Apagar avaliações</button></dialog>
+<dialog id="erpSummaryDialog" aria-labelledby="erpSummaryTitle" aria-describedby="erpSummaryDescription">
+  <header class="summary-header">
+    <div><p class="summary-eyebrow">Aurora Live · compartilhar</p><h2 id="erpSummaryTitle">Copiar Resumo</h2><p id="erpSummaryDescription">Escolha o período, revise e copie. Você decide onde compartilhar.</p></div>
+    <button type="button" id="erpSummaryClose" class="summary-icon" aria-label="Fechar resumo" title="Fechar (Esc)">✕</button>
+  </header>
+  <div class="summary-body">
+    <fieldset class="summary-modes"><legend>Formato do resumo</legend><div class="summary-segmented">
+      <label><input type="radio" name="erpSummaryMode" value="simple" checked><span>Simples</span></label>
+      <label><input type="radio" name="erpSummaryMode" value="detailed"><span>✦ Detalhado com Aurora AI</span></label>
+    </div></fieldset>
+    <div class="summary-controls">
+      <label class="summary-field" for="erpSummaryPeriod">Período<select id="erpSummaryPeriod"><option value="today">Hoje</option><option value="yesterday">Ontem</option><option value="week">Semana atual</option><option value="month">Mês atual</option><option value="custom">Intervalo personalizado</option></select></label>
+      <label class="summary-finance"><input type="checkbox" id="erpSummaryFinance"><span>Incluir informações financeiras</span></label>
+    </div>
+    <div id="erpSummaryDates" class="summary-dates" hidden>
+      <label class="summary-field" for="erpSummaryStart">Data inicial<input type="date" id="erpSummaryStart"></label>
+      <label class="summary-field" for="erpSummaryEnd">Data final<input type="date" id="erpSummaryEnd"></label>
+    </div>
+    <p id="erpSummaryHandoff" class="summary-hint" role="note" hidden></p>
+    <p id="erpSummaryScope" class="summary-hint"></p>
+    <div id="erpSummaryConfirm" class="summary-confirm" role="alert" hidden><p>Você editou a prévia. Deseja substituí-la com os dados da nova seleção?</p><div><button type="button" id="erpSummaryKeep">Manter minha edição</button><button type="button" id="erpSummaryReplace">Substituir prévia</button></div></div>
+    <div class="summary-preview-heading"><label for="erpSummaryPreview">Prévia editável</label><span id="erpSummarySource" class="summary-source">Sem IA</span></div>
+    <textarea id="erpSummaryPreview" rows="12" spellcheck="true" aria-describedby="erpSummaryScope erpSummaryPreviewHelp"></textarea>
+    <p id="erpSummaryPreviewHelp" class="summary-hint">A cópia mantém exatamente este texto. Alterações manuais não modificam os dados do ERP.</p>
+    <p id="erpSummaryAIHelp" class="summary-hint" hidden>A Aurora recebe apenas indicadores agregados. A geração acontece somente ao clicar no botão; o resumo simples continua disponível.</p>
+  </div>
+  <footer class="summary-footer">
+    <p id="erpSummaryStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div class="summary-actions"><button type="button" id="erpSummaryRefresh">Atualizar prévia</button><button type="button" id="erpSummaryGenerate" hidden>✦ Gerar com Aurora</button><button type="button" id="erpSummaryCopy" class="summary-primary">Copiar para WhatsApp</button></div>
+  </footer>
+</dialog>
+
+<dialog id="erpWorkDialog" aria-labelledby="wc-title" aria-describedby="wc-description">
+<header class="wc-header"><div><p class="wc-eyebrow">Aurora Live · consulta e organização</p><h2 id="wc-title">Central de Trabalho</h2><p id="wc-description">Seus registros, conferências e ações rápidas em um só lugar.</p></div><button type="button" id="wc-close" aria-label="Fechar Central de Trabalho" title="Fechar (Esc)">✕</button></header>
+<div class="wc-body">
+<p id="wc-source" class="wc-hint"></p>
+<section aria-labelledby="wc-overview-title"><h3 id="wc-overview-title">Visão geral</h3><p id="wc-scope" class="wc-hint"></p><div id="wc-cards" class="wc-cards"></div><p id="wc-note" class="wc-hint"></p></section>
+<section id="wc-filters" aria-labelledby="wc-filters-title"><div class="wc-section-heading"><h3 id="wc-filters-title">Encontrar registros</h3><button type="button" id="wc-clear">Limpar todos os filtros</button></div>
+<div class="wc-period"><label class="wc-field">Período<select id="wc-period"></select></label><div id="wc-custom" class="wc-grid" hidden><label class="wc-field">Data inicial<input type="date" id="wc-start"></label><label class="wc-field">Data final<input type="date" id="wc-end"></label></div></div>
+<div id="wc-quick" class="wc-toolbar" role="group" aria-label="Consultas rápidas combináveis"></div>
+<details class="wc-filter-details"><summary>Busca e filtros complementares</summary><div class="wc-grid"><label class="wc-field">ID contém<input id="wc-id" type="search" placeholder="Buscar ID"></label><label class="wc-field">Número do processo contém<input id="wc-cnj" type="search" inputmode="numeric" placeholder="Com ou sem máscara"></label><label class="wc-field">Tipo de encerramento<select id="wc-type"></select></label><label class="wc-field">Mês de referência<select id="wc-reference"></select></label><label class="wc-field">Encerrado no Panjud<select id="wc-panjud"></select></label><label class="wc-field">Recusado no Panjud<select id="wc-recusado"></select></label><label class="wc-field wc-wide">Observações contêm<input id="wc-observations" type="search" placeholder="Busca textual, sem interpretação por IA"></label></div></details>
+<div id="wc-chips" class="wc-toolbar" aria-label="Filtros ativos"></div><p id="wc-errors" role="alert" hidden></p></section>
+<section id="wc-list" aria-labelledby="wc-results-title"><div class="wc-section-heading"><div><h3 id="wc-results-title" tabindex="-1">Registros selecionados</h3><strong id="wc-count" aria-live="polite"></strong></div><div class="wc-sort"><label class="wc-field">Ordenar por<select id="wc-sort"></select></label><label class="wc-field">Direção<select id="wc-direction"><option value="desc">Decrescente</option><option value="asc">Crescente</option></select></label></div></div><p id="wc-result-metrics" class="wc-hint"></p>
+<div class="wc-table-scroll" role="region" tabindex="0" aria-label="Tabela de registros com rolagem horizontal"><table><thead><tr><th scope="col">ID</th><th scope="col">Nº Processo</th><th scope="col">Tipo</th><th scope="col">Data</th><th scope="col">Encerrado no Panjud</th><th scope="col">Recusado no Panjud</th><th scope="col">Observações</th><th scope="col">Ações</th></tr></thead><tbody id="wc-rows"></tbody></table></div>
+<p id="wc-empty" class="wc-empty" hidden>Nenhum registro corresponde à consulta. Revise o período ou remova filtros acima.</p><div class="wc-pagination"><button type="button" id="wc-prev" aria-label="Página anterior">← Anterior</button><span id="wc-page"></span><button type="button" id="wc-next" aria-label="Próxima página">Próxima →</button></div></section>
+<section id="wc-details" class="wc-panel" aria-labelledby="wc-detail-title" hidden><div class="wc-section-heading"><h3 id="wc-detail-title">Detalhes do registro</h3><button type="button" id="wc-detail-close">← Voltar à lista</button></div><dl id="wc-detail-fields"></dl><h4>Conferências identificáveis</h4><ul id="wc-detail-alerts"></ul><p class="wc-hint">Alertas cadastrais não comprovam erros nem pendências jurídicas. Observações são opcionais. Nenhum dado foi alterado.</p><button type="button" id="wc-detail-edit">Abrir no cadastro</button></section>
+<section class="wc-panel" id="wc-ai" aria-labelledby="wc-ai-title" aria-busy="false"><div class="wc-section-heading"><div><p class="wc-eyebrow">Interpretação opcional</p><h3 id="wc-ai-title">Aurora, sobre esta seleção</h3></div><button type="button" id="wc-analyze">✦ Analisar com Aurora</button></div><p id="wc-ai-status" class="wc-hint" role="status"></p><ul id="wc-ai-result"></ul></section>
+<section aria-labelledby="wc-actions-title"><h3 id="wc-actions-title">Continuar o trabalho</h3><div class="wc-toolbar"><button type="button" id="wc-export" class="wc-primary">Exportar resultados</button><button type="button" id="wc-summary">Copiar Resumo</button><button type="button" id="wc-reload">Atualizar consulta</button></div><p class="wc-hint">Exportação: recebe todos os filtros desta consulta. Copiar Resumo: usa todos os registros do período, até hoje, sem filtros de tipo, status ou busca; o escopo será informado no resumo.</p><button type="button" id="wc-advanced" class="wc-link">Abrir filtros avançados na Central de Exportação →</button></section>
+</div><footer class="wc-footer"><p id="wc-status" role="status" aria-live="polite">Somente leitura · nenhum registro é alterado pela consulta.</p></footer>
+</dialog>
+
+<dialog id="erpExportDialog" aria-labelledby="ex-title" aria-describedby="ex-description">
+  <header class="export-header"><div><p class="export-eyebrow">Aurora Live · documentos</p><h2 id="ex-title">Central de Exportação</h2><p id="ex-description">Escolha os registros, confira a prévia e exporte. Seus cadastros permanecem intactos.</p></div><button type="button" id="ex-close" aria-label="Fechar Central de Exportação" title="Fechar (Esc)">✕</button></header>
+  <div class="export-body">
+    <p id="ex-source" class="export-hint"></p>
+    <fieldset id="ex-workspace"><legend class="export-sr">Filtros e seleção dos registros</legend>
+      <div class="export-toolbar"><button type="button" id="ex-clear">Limpar filtros</button><button type="button" id="ex-all">Selecionar todos os registros</button><button type="button" id="ex-dashboard">Usar filtros do dashboard</button><button type="button" id="ex-reload">Reler dados disponíveis</button></div>
+      <div class="export-selection"><strong id="ex-count" role="status" aria-live="polite"></strong><p class="export-hint">Entre categorias: E. Nas seleções múltiplas: OU. Remova um filtro clicando no chip.</p><div id="ex-chips" aria-label="Filtros ativos"></div><p id="ex-errors" role="alert" hidden></p></div>
+      <div id="ex-controls"></div>
+      <section class="export-format"><h3>Formato do arquivo</h3><label class="export-field">Exportar como<select id="ex-format"><option value="xlsx">Excel (.xlsx)</option><option value="pdf">PDF (.pdf)</option></select></label><label id="ex-summary-label" class="export-check"><input type="checkbox" id="ex-summary"> Incluir aba de resumo e filtros</label><p id="ex-format-info" class="export-hint"></p></section>
+      <section class="export-preview" aria-labelledby="ex-preview-title"><h3 id="ex-preview-title">Prévia dos resultados</h3><p id="ex-stats" class="export-hint"></p><p id="ex-empty">Nenhum registro encontrado. Confira os filtros ou selecione toda a base.</p><div class="export-table-scroll" tabindex="0" role="region" aria-label="Tabela de prévia, deslize para ver todas as colunas"><table><thead><tr><th scope="col">ID</th><th scope="col">Nº Processo</th><th scope="col">Tipo de encerramento</th><th scope="col">Data</th><th scope="col">Encerrado no Panjud</th><th scope="col">Recusados no Panjud</th><th scope="col">Observações</th></tr></thead><tbody id="ex-preview-body"></tbody></table></div><div class="export-pagination"><button type="button" id="ex-prev">Anterior</button><span id="ex-page"></span><button type="button" id="ex-next">Próxima</button></div></section>
+    </fieldset>
+  </div>
+  <footer class="export-footer"><p id="ex-status" role="status" aria-live="polite"></p><div><button type="button" id="ex-cancel-job" hidden>Cancelar geração</button><button type="button" id="ex-generate" class="export-primary">↓ Exportar</button></div></footer>
+</dialog>
+
+<script src="js/core/config-state.js" defer></script>
+<script src="js/core/helpers.js" defer></script>
+<script src="js/core/audit-log.js" defer></script>
+<script src="js/core/cloud-api.js?v=5.1.0-integrated" defer></script>
+<script src="js/core/calculations.js?v=2.1.2-inativacao" defer></script>
+<script src="js/core/render.js?v=2.1.2-inativacao" defer></script>
+<script src="js/core/records.js" defer></script>
+<script src="js/aurora/achievements/catalog.js?v=2.1.2-inativacao" defer></script>
+<script src="js/aurora/achievements/engine.js?v=2.1.2-inativacao" defer></script>
+<script src="js/aurora/achievements/view.js?v=2.0.1-ui" defer></script>
+<script src="js/aurora/live/metrics.js" defer></script>
+<script src="js/aurora/live/insights.js?v=achievements-2.0.0" defer></script>
+<script src="js/aurora/live/personality.js?v=4.0.0" defer></script>
+<script src="js/aurora/live/view.js?v=4.0.0" defer></script>
+<script src="js/aurora/memory/schema.js?v=2.1.2-inativacao" defer></script>
+<script src="js/aurora/memory/history.js?v=2.1.2-inativacao" defer></script>
+<script src="js/aurora/memory/patterns.js?v=2.1.2-inativacao" defer></script>
+<script src="js/aurora/memory/retention.js?v=1.0.0" defer></script>
+<script src="js/aurora/memory/episodes.js?v=2.1.2-inativacao" defer></script>
+<script src="js/aurora/memory/store.js?v=5.0.0" defer></script>
+<script src="js/aurora/memory/context.js?v=1.0.0" defer></script>
+<script src="js/aurora/memory/core.js?v=5.0.0" defer></script>
+<script src="js/aurora/memory/bridge.js?v=1.0.0" defer></script>
+<script defer src="js/aurora/analytics/schema.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/analytics/metrics.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/analytics/comparisons.js?v=1.0.0"></script>
+<script defer src="js/aurora/analytics/trends.js?v=1.0.0"></script>
+<script defer src="js/aurora/analytics/evidence.js?v=1.0.0"></script>
+<script defer src="js/aurora/analytics/relations.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/analytics/context.js?v=1.0.0"></script>
+<script defer src="js/aurora/analytics/engine.js?v=1.0.0"></script>
+<script defer src="js/aurora/integration/context-router.js?v=5.0.0"></script>
+<script defer src="js/aurora/integration/grounding.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/integration/adapters.js?v=3.1.0"></script>
+<script defer src="js/aurora/integration/semantics.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/integration/language.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/integration/validation.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/integration/narrative.js?v=5.1.0-integrated"></script>
+<script defer src="js/aurora/integration/autonomy-adapter.js?v=4.0.0"></script>
+<script defer src="js/aurora/integration/api.js?v=3.1.0"></script>
+<script defer src="js/aurora/autonomy/policy.js?v=4.0.0"></script>
+<script defer src="js/aurora/refinement/policy.js?v=5.0.0"></script>
+<script defer src="js/aurora/autonomy/state.js?v=5.0.0"></script>
+<script defer src="js/aurora/autonomy/relevance.js?v=5.0.0"></script>
+<script defer src="js/aurora/autonomy/context.js?v=4.0.0"></script>
+<script defer src="js/aurora/autonomy/proposals.js?v=2.1.2-inativacao"></script>
+<script defer src="js/aurora/refinement/core.js?v=5.0.0"></script>
+<script defer src="js/aurora/autonomy/core.js?v=5.0.0"></script>
+<script src="js/core/diagnostics.js?v=2.1.2-inativacao" defer></script>
+<script src="js/core/aurora.js?v=2.1.2-inativacao" defer></script>
+<script src="js/core/audit-window.js" defer></script>
+<script src="js/forms/cnj.js" defer></script>
+<script src="js/aurora/bootstrap.js?v=2.1.2-inativacao" defer></script>
+<script src="js/core/smart-search.js?v=5.1.0-integrated" defer></script>
+<script src="js/aurora/sheet-memory.js?v=5.1.0-integrated" defer></script>
+<script src="js/aurora/goal-metrics.js?v=5.1.0-integrated" defer></script>
+<script src="js/core/init.js?v=5.1.0-integrated" defer></script>
+<script src="js/reports/metrics.js?v=2.1.2-inativacao" defer></script>
+<script src="js/reports/ai.js?v=2.1.2-inativacao" defer></script>
+<script src="js/reports/view.js?v=2.1.2-inativacao" defer></script>
+<script src="js/export/data.js?v=2.1.2-inativacao" defer></script>
+<script src="js/export/filters.js?v=5.1.0-integrated" defer></script>
+<script src="js/export/excel.js" defer></script>
+<script src="js/export/pdf.js" defer></script>
+<script src="js/export/documents.js" defer></script>
+<script src="js/export/view.js?v=5.1.0-integrated" defer></script>
+<script src="js/work-center/core.js?v=2.1.2-inativacao" defer></script>
+<script src="js/work-center/ai.js" defer></script>
+<script src="js/work-center/view.js?v=2.1.2-inativacao" defer></script>
+<script defer src="js/aurora/integration/finance-view.js?v=3.1.0"></script>
+<script src="js/themes/effects/registry.js" defer></script>
+<script src="js/themes/effects/original.js" defer></script>
+<script src="js/themes/effects/claro.js" defer></script>
+<script src="js/themes/effects/escuro.js" defer></script>
+<script src="js/themes/effects/natal.js" defer></script>
+<script src="js/themes/effects/ano-novo.js" defer></script>
+<script src="js/themes/effects/pascoa.js" defer></script>
+<script src="js/themes/effects/festa-junina.js" defer></script>
+<script src="js/themes/effects/halloween.js" defer></script>
+<script src="js/themes/effects/terror.js" defer></script>
+<script src="js/themes/effects/cyberpunk.js?v=5.1.0-integrated" defer></script>
+<script src="js/themes/effects/glassy-crm.js?v=20261016-glassy-fix1" defer></script>
+<script src="js/themes/runtime.js" defer></script>
+<script src="js/themes/settings.js?v=2.1.2-inativacao" defer></script>
+<script defer src="js/aurora/autonomy/view.js?v=4.0.0"></script>
+<script defer src="js/aurora/refinement/view.js?v=5.0.0"></script>
+ <!-- POP-UP MINIMALISTA AURORA VOICE -->
+<div id="auroraVoiceModal" class="aurora-voice-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="aurora-voice-card">
+    <button type="button" id="btnFecharVoz" class="aurora-voice-close" title="Fechar (Esc)">✕</button>
+    <div class="aurora-voice-orb" id="auroraVoiceOrb">
+      <div class="aurora-voice-pulse"></div>
+      <div class="aurora-voice-core">✦</div>
+    </div>
+    <div class="aurora-voice-title" id="auroraVoiceStatus">Ouvindo você…</div>
+    <p class="aurora-voice-transcript" id="auroraVoiceTranscript">Pode falar o que você precisa no ERP…</p>
+  </div>
+</div>
+<dialog id="auroraFinanceDialog" aria-labelledby="auroraFinanceTitle">
+<header><h2 id="auroraFinanceTitle">Análise do Radar Financeiro</h2><button type="button" id="auroraFinanceClose">Fechar</button></header>
+<p id="auroraFinanceStatus" role="status"></p>
+<label><input type="checkbox" id="auroraFinanceAllow"> Autorizar o uso dos valores financeiros agregados nesta análise com Aurora AI.</label>
+<button type="button" id="auroraFinanceGenerate">Analisar mês atual</button><div id="auroraFinanceOutput"></div>
+</dialog>
+</body>
+</html>

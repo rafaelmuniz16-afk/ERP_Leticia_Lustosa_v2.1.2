@@ -1,0 +1,21 @@
+/* Extends the EXISTING Observa ledger; no second Memory database. */
+(() => {
+ 'use strict';const A=window.__auroraAutonomyParts,{copy}=A.U,{limits,preferences}=A.Policy;
+ const KEY='aurora_live_events_v1',LOCK='aurora-live-generation';let status='available',cache=null;
+ const timestamp=n=>Number.isFinite(n)&&n>=0&&n<=Date.now()+60000?n:0,integer=n=>Number.isInteger(n)&&n>=0&&n<=10000?n:0;
+ const defaults=()=>({seen:{},day:'',count:0,lastAt:0,analyticalSource:'',autonomy:{version:1,preferences:preferences(),fingerprints:{},lastSource:'',presentDay:'',presentCount:0,lastPresentedAt:0,receipts:[]}});
+ const id=s=>typeof s==='string'&&/^(?:integration:[a-f0-9]{1,32}|autonomy:[a-f0-9]{16}|(?:personal-record|monthly-goal|daily-goal|cases-100|cases-50|streak-5|above-average|near-record):[0-9-]{4,10})$/.test(s);
+ function sanitize(v){if(!v||typeof v!=='object'||Array.isArray(v))throw Error('LEDGER_INVALID');if(v.autonomy&&v.autonomy.version!==1)throw Error('FUTURE_SCHEMA');const l=defaults(),now=Date.now();l.day=A.U.date(v.day)?v.day:'';l.count=integer(v.count);l.lastAt=timestamp(v.lastAt);l.analyticalSource=/^[a-f0-9]{1,32}$/.test(v.analyticalSource)?v.analyticalSource:'';
+  for(const[k,t]of Object.entries(v.seen||{}).slice(0,300))if(id(k)&&timestamp(t)&&now-t<limits.retentionMs)l.seen[k]=t;
+  const x=v.autonomy;if(x){l.autonomy.preferences=preferences(x.preferences);l.autonomy.lastSource=/^[a-f0-9]{1,32}$/.test(x.lastSource)?x.lastSource:'';l.autonomy.presentDay=A.U.date(x.presentDay)?x.presentDay:'';l.autonomy.presentCount=integer(x.presentCount);l.autonomy.lastPresentedAt=timestamp(x.lastPresentedAt);
+   for(const[k,d]of Object.entries(x.fingerprints||{}).slice(0,160))if(/^[a-f0-9]{16}$/.test(k)&&/^[a-f0-9]{16}$/.test(d?.meaning)&&timestamp(d?.at)&&now-d.at<limits.retentionMs)l.autonomy.fingerprints[k]={meaning:d.meaning,at:d.at,...(d.origin==='refinement'?{origin:'refinement'}:{})};
+   if(Array.isArray(x.receipts))for(const r of x.receipts.slice(-60))if(id(r?.id)&&timestamp(r.at)&&now-r.at<limits.retentionMs&&['presented','ignored','executed'].includes(r.state)&&['local','groq','fallback'].includes(r.source))l.autonomy.receipts.push({id:r.id,at:r.at,state:r.state,source:r.source});
+  }if(x&&Object.hasOwn(x,'refinement'))l.autonomy.refinement=A.RefinementPolicy?A.RefinementPolicy.preserve(x.refinement):copy(x.refinement);return l;
+ }
+ function read(){try{const raw=window.localStorage?.getItem(KEY);if(!window.localStorage){status='unavailable';return cache?copy(cache):defaults();}if(!raw){status='available';return defaults();}if(raw.length*2>limits.maxBytes)throw Error('OVERSIZED');const l=sanitize(JSON.parse(raw));status='available';cache=l;return copy(l);}catch(e){status=e.message==='FUTURE_SCHEMA'?'future_schema':'unavailable';return cache?copy(cache):defaults();}}
+ function write(ledger){if(status!=='available')return false;try{const l=sanitize(ledger),sort=o=>Object.fromEntries(Object.entries(o).sort((a,b)=>(b[1]?.at||b[1])-(a[1]?.at||a[1])));l.seen=Object.fromEntries(Object.entries(sort(l.seen)).slice(0,limits.maxSeen));l.autonomy.fingerprints=Object.fromEntries(Object.entries(sort(l.autonomy.fingerprints)).slice(0,limits.maxFingerprints));l.autonomy.receipts=l.autonomy.receipts.slice(-40);const raw=JSON.stringify(l);if(raw.length*2>limits.maxBytes)throw Error('OVERSIZED');window.localStorage.setItem(KEY,raw);cache=l;return true;}catch(_){status='unavailable';return false;}}
+ async function locked(task,wait=false){if(!navigator.locks?.request){A.D.log('COORDINATION_UNAVAILABLE');return {reason:'COORDINATION_UNAVAILABLE'};}try{return await navigator.locks.request(LOCK,wait?{}:{ifAvailable:true},async lock=>{if(!lock){A.D.log('OTHER_TAB_BUSY');return {reason:'OTHER_TAB_BUSY'};}const ledger=read();if(status!=='available'){A.D.log('STORAGE_UNAVAILABLE');return {reason:'STORAGE_UNAVAILABLE'};}return task(ledger);});}catch(_){A.D.counters.failures++;A.D.log('COORDINATION_FAILED');return {reason:'COORDINATION_FAILED'};}}
+ function remember(l,items){A.Refinement?.remember(l,items);for(const d of items)l.autonomy.fingerprints[d.family]={meaning:d.meaning,at:Date.now()};}
+ function receipt(l,id,state,source='local'){l.autonomy.receipts.push({id,at:Date.now(),state,source});}
+ A.Store={KEY,LOCK,read,write,locked,remember,receipt,getStatus:()=>status};
+})();

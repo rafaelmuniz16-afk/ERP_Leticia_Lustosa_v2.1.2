@@ -1,0 +1,64 @@
+/* Existe somente dentro de Configurações, quando o Glassy está selecionado. */
+#glassyThemeCarousel { display: none; }
+html[data-erp-theme="glassy-crm"] #erp-settings #glassyThemeCarousel {
+  --glassy-card-width: 260px;
+  --glassy-card-step: 155px;
+  display: block; position: relative; isolation: isolate; overflow: hidden; min-width: 0;
+  border: 1px solid #ffffff24; border-radius: 20px; padding: 18px 0;
+  background: linear-gradient(180deg,#0b0e1540,#05080de8),url('../assets/images/glassy/facets.svg') center/320px;
+  color: #efedf5; box-shadow: inset 0 1px 1px #ffffff1c,0 18px 35px #0005;
+}
+#glassyThemeCarousel .glassy-carousel-head { padding: 0 20px; }
+#glassyThemeCarousel .glassy-carousel-head > span { font-size: 10px; letter-spacing: .18em; color: #d3c4ff; font-weight: 700; }
+#glassyThemeCarousel .glassy-carousel-head p { margin: 6px 0 0; font-size: 11px; color: #b8b6c9; line-height: 1.6; }
+#glassyThemeCarousel .glassy-stage { position: relative; height: 390px; perspective: 1100px; touch-action: pan-y; user-select: none; }
+#glassyThemeCarousel #erp-theme-grid {
+  position: absolute; inset: 20px 0 24px; display: block; margin: 0;
+  transform-style: preserve-3d;
+}
+#glassyThemeCarousel #erp-theme-grid > .erp-theme-card {
+  position: absolute; top: 0; left: calc(50% - var(--glassy-card-width)/2); width: var(--glassy-card-width); height: 330px;
+  display: flex; flex-direction: column; padding: 12px; overflow: hidden; border-radius: 18px;
+  border: 1px solid #ffffff30; background: linear-gradient(145deg,#ffffff13,#ffffff01 48%),#14181cf2; color: #f4f1fa;
+  box-shadow: inset 0 1px 1px #ffffff32,inset 0 -1px 1px #ffffff10,0 18px 40px #0007;
+  transform: translateX(calc(var(--glassy-offset)*var(--glassy-card-step))) translateY(calc(var(--glassy-depth)*13px)) translateZ(calc(var(--glassy-depth)*-55px)) rotateY(calc(var(--glassy-offset)*-9deg)) scale(var(--glassy-scale));
+  opacity: calc(1 - var(--glassy-depth)*.15);
+  transition: transform .6s cubic-bezier(.22,.75,.2,1),opacity .4s,border-color .2s,box-shadow .2s;
+  backface-visibility: hidden; cursor: pointer;
+}
+#glassyThemeCarousel #erp-theme-grid > [data-glassy-hidden="true"] { visibility: hidden; pointer-events: none; }
+#glassyThemeCarousel #erp-theme-grid > .glassy-centered { border-color: #ffffff64; box-shadow: inset 0 1px 2px #ffffff40,0 22px 40px #0009; }
+#glassyThemeCarousel #erp-theme-grid > [aria-pressed="true"] { border-color: #b8a0f5; box-shadow: inset 0 1px 2px #ffffff40,0 0 0 1px #b8a0f588,0 22px 40px #0009; }
+#glassyThemeCarousel #erp-theme-grid > .erp-theme-card:hover { border-color: #d6c9ff; }
+#glassyThemeCarousel .erp-preview { height: 150px; flex-shrink: 0; border-radius: 10px; }
+#glassyThemeCarousel .erp-preview-main { padding: 18px 10px; grid-template-rows: 12px 36px 48px; gap: 8px; }
+#glassyThemeCarousel .erp-preview-side { padding-top: 16px; gap: 12px; }
+#glassyThemeCarousel .erp-theme-card strong { font-size: 16px; margin: 16px 4px 8px; line-height: 1.3; }
+#glassyThemeCarousel .erp-theme-desc { color: #c3c4ce; font-size: 11px; line-height: 1.6; min-height: 0; }
+#glassyThemeCarousel .erp-card-state { color: #d7c6ff; margin-top: auto; padding-top: 10px; font-size: 11px; }
+#glassyThemeCarousel .glassy-dock {
+  position: relative; display: flex; align-items: center; gap: 8px; width: fit-content; max-width: calc(100% - 20px);
+  margin: 0 auto; padding: 7px; border-radius: 40px; border: 1px solid #ffffff28;
+  background: linear-gradient(130deg,#ffffff12,#ffffff03),#14171dcc;
+  box-shadow: inset 0 1px 1px #ffffff21,0 6px 22px #0008; backdrop-filter: blur(12px);
+}
+#glassyThemeCarousel .glassy-dock button { flex-shrink: 0; min-width: 40px; min-height: 40px; border: 1px solid transparent; border-radius: 24px; background: transparent; color: #e2dcf5; cursor: pointer; padding: 4px 10px; font: inherit; font-size: 24px; }
+#glassyThemeCarousel .glassy-dock button:hover { border-color: #ffffff28; background: #ffffff0c; }
+#glassyThemeCarousel .glassy-dock [data-glassy-action="apply"] { font-size: 11px; background: #a08cd426; border-color: #b8a0f540; }
+#glassyThemeCarousel .glassy-dock button:disabled { opacity: .55; cursor: default; }
+#glassyThemeCarousel .glassy-dock-caption { min-width: 0; width: 130px; }
+#glassyThemeCarousel .glassy-dock-caption strong { display: block; font-size: 11px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+#glassyThemeCarousel .glassy-position { display: block; font-size: 10px; color: #c3bdd5; margin-top: 4px; }
+#glassyThemeCarousel button:focus-visible { outline: 2px solid #c4beff; outline-offset: -3px; }
+#glassyThemeCarousel .glassy-announcement { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); margin: 0; }
+@media(max-width:600px) {
+  html[data-erp-theme="glassy-crm"] #erp-settings #glassyThemeCarousel { --glassy-card-width: clamp(180px,60vw,250px); --glassy-card-step: 115px; padding: 14px 0; }
+  #glassyThemeCarousel .glassy-carousel-head { padding: 0 14px; }
+  #glassyThemeCarousel .glassy-dock { gap: 2px; padding: 5px; }
+  #glassyThemeCarousel .glassy-dock-caption { width: clamp(58px,18vw,105px); }
+  #glassyThemeCarousel .glassy-dock button { min-width: 36px; padding: 4px 7px; }
+  #glassyThemeCarousel .glassy-dock [data-glassy-action="apply"] { font-size: 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #glassyThemeCarousel #erp-theme-grid > .erp-theme-card { transition: none; }
+}

@@ -1,0 +1,14 @@
+/* All theme colors inherited; no enlarged dashboard panel. */
+#sideAuroraCard .aurora-live-comment { max-height:7.5em; overflow-y:auto; scrollbar-width:thin; }
+#auroraFinanceDialog { box-sizing:border-box; width:min(640px,calc(100% - 24px)); max-height:85dvh; overflow:auto; border:1px solid var(--line); border-radius:var(--radius,16px); background:var(--surface); color:var(--text); padding:20px; font:inherit; }
+#auroraFinanceDialog::backdrop { background:rgb(0 0 0 / .5); }
+#auroraFinanceDialog header { display:flex; gap:12px; justify-content:space-between; align-items:start; }
+#auroraFinanceDialog h2 { margin:0; font-size:18px; }
+#auroraFinanceDialog button { padding:9px 12px; color:var(--text); background:var(--surface-2); border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+#auroraFinanceDialog label { display:block; margin:16px 0; line-height:1.6; }
+#auroraFinanceOutput { white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.65; margin-top:16px; }
+#auroraFinanceStatus { color:var(--muted); font-size:12px; line-height:1.6; }
+#auroraFinanceOutput h3 { font-size:14px; margin:0 0 8px; }
+#auroraFinanceOutput p { margin:0 0 10px; }
+html[data-erp-theme=glassy-crm] #auroraFinanceDialog { background:linear-gradient(135deg,#7f6bba12,#2c8ca30a),var(--surface); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
+#auroraFinanceDialog :focus-visible { outline:2px solid var(--primary); outline-offset:2px; }

@@ -1,0 +1,109 @@
+/* Escopo exclusivo do card existente. Os tokens vêm da identidade ativa. */
+#sideAuroraCard {
+  --live-accent: var(--primary, #d85c9d);
+  display: block; position: relative; isolation: isolate; min-width: 0; max-width: none;
+  margin: 0 0 20px; padding: 22px; border-radius: var(--radius, 18px);
+  border: 1px solid var(--line); background: var(--surface); color: var(--text);
+  box-shadow: var(--shadow); cursor: default; overflow: hidden;
+  transition: background-color .16s, border-color .16s;
+}
+#sideAuroraCard::before { content: ''; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg,var(--live-accent),var(--primary-2,var(--live-accent))); pointer-events: none; }
+#sideAuroraCard:hover { transform: none; background: var(--surface); border-color: var(--line); box-shadow: var(--shadow); }
+#sideAuroraCard .side-aurora-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 6px; }
+#sideAuroraCard .side-aurora-avatar { flex: 0 0 32px; width: 32px; height: 32px; border-radius: 10px; font-size: 18px; }
+#sideAuroraCard .side-aurora-name { margin: 0; font-size: 19px; line-height: 1.3; color: var(--text); }
+#sideAuroraCard .side-aurora-tag { margin-left: 0; background: var(--surface-3); color: var(--text); border: 1px solid var(--line); }
+#sideAuroraCard .aurora-live-date { margin-left: auto; font-size: 11px; color: var(--muted); }
+#sideAuroraCard .aurora-live-subtitle { font-size: 12px; line-height: 1.6; color: var(--muted); margin: 0 0 18px; }
+#sideAuroraCard .aurora-live-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+#sideAuroraCard .aurora-live-block { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-2); }
+#sideAuroraCard .aurora-live-heading { font: inherit; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 14px; color: var(--muted); }
+#sideAuroraCard .aurora-live-score { display: block; font-size: clamp(34px,4vw,48px); font-weight: 800; letter-spacing: -1.8px; line-height: 1.1; color: var(--live-accent); font-variant-numeric: tabular-nums; }
+#sideAuroraCard .aurora-live-power-value { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+#sideAuroraCard .aurora-live-power-value .aurora-live-score { overflow-wrap: anywhere; min-width: 0; }
+#sideAuroraCard .aurora-live-power-unit { font-size: 12px; font-weight: 600; color: var(--muted); }
+#sideAuroraCard .aurora-live-note.aurora-live-power-scale { color: var(--text); }
+#sideAuroraCard .aurora-live-note.aurora-live-bar-note { margin-top: -4px; font-size: 10px; }
+#sideAuroraCard .aurora-live-relation { margin: 10px 0 5px; font-size: 13px; font-weight: 700; color: var(--text); }
+#sideAuroraCard .aurora-live-note { display: block; font-size: 11px; line-height: 1.6; margin: 6px 0 0; color: var(--muted); overflow-wrap: anywhere; }
+#sideAuroraCard .aurora-live-progress { --live-progress: 0%; height: 6px; background: var(--surface-3); border-radius: 9px; overflow: hidden; margin: 14px 0 10px; }
+#sideAuroraCard .aurora-live-progress::after { content: ''; display: block; width: var(--live-progress); height: 100%; background: var(--live-accent); border-radius: inherit; transition: width .3s ease; }
+#sideAuroraCard .aurora-live-comparison { display: flex; gap: 16px; justify-content: space-between; margin: 0; }
+#sideAuroraCard .aurora-live-comparison div { min-width: 0; flex: 1; }
+#sideAuroraCard .aurora-live-comparison dt { color: var(--muted); font-size: 11px; line-height: 1.5; }
+#sideAuroraCard .aurora-live-comparison dd { margin: 6px 0 0; font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; }
+#sideAuroraCard .aurora-live-observation { background: var(--surface-3); }
+#sideAuroraCard .aurora-live-event-label { display: inline-block; font-size: 11px; font-weight: 700; color: var(--text); border-bottom: 2px solid var(--live-accent); padding-bottom: 4px; margin-bottom: 10px; }
+#sideAuroraCard .aurora-live-comment { margin: 0; font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
+#sideAuroraCard .aurora-live-fact { font-size: 11px; line-height: 1.6; color: var(--muted); margin: 10px 0 0; }
+#sideAuroraCard .aurora-live-radar { display: flex; flex-direction: column; }
+#sideAuroraCard .side-aurora-msg { color: var(--text); font-size: 14px; font-weight: 500; line-height: 1.7; min-height: 72px; flex: 1; margin: 8px 0 14px; }
+#sideAuroraCard .aurora-live-radar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: auto; }
+#sideAuroraCard .aurora-live-button { font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--text); }
+#sideAuroraCard .aurora-live-button:hover { border-color: var(--live-accent); }
+#sideAuroraCard :is(button,summary):focus-visible { outline: 2px solid var(--live-accent); outline-offset: 3px; }
+#sideAuroraCard #auroraRadarPosition { margin-left: auto; font-size: 11px; font-variant-numeric: tabular-nums; color: var(--muted); }
+#sideAuroraCard .aurora-live-trend { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 6px; list-style: none; padding: 0; margin: 0 0 12px; }
+#sideAuroraCard .aurora-live-day { display: flex; flex-direction: column; text-align: center; gap: 5px; font-size: 9px; color: var(--muted); }
+#sideAuroraCard .aurora-live-day-value { font-size: 11px; font-weight: 700; color: var(--text); }
+#sideAuroraCard .aurora-live-day-track { height: 48px; display: flex; align-items: flex-end; background: var(--surface-3); border-radius: 4px; overflow: hidden; }
+#sideAuroraCard .aurora-live-day-track i { display: block; width: 100%; background: var(--live-accent); opacity: .5; min-height: 0; }
+#sideAuroraCard .is-today .aurora-live-day-track i { opacity: 1; }
+#sideAuroraCard .aurora-live-achievements { display: grid; gap: 8px; list-style: none; padding: 0; margin: 12px 0 0; }
+#sideAuroraCard .aurora-live-achievements li { padding-left: 10px; border-left: 2px solid var(--live-accent); }
+#sideAuroraCard .aurora-live-achievements strong { font-size: 11px; font-weight: 700; display: block; }
+#sideAuroraCard .aurora-live-achievements span,#sideAuroraCard .aurora-live-empty { font-size: 10px; line-height: 1.6; color: var(--muted); }
+#sideAuroraCard .aurora-live-catalog-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 8px 0; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 11px; text-align: left; cursor: pointer; }
+#sideAuroraCard .aurora-live-catalog-link:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+#sideAuroraCard .aurora-live-method { margin-top: 16px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+#sideAuroraCard .aurora-live-method summary { width: fit-content; cursor: pointer; color: var(--text); font-weight: 600; }
+#sideAuroraCard .aurora-live-method p { margin: 8px 0 0; max-width: 90ch; }
+#sideAuroraCard[data-live-record=true] .aurora-live-personal { border-color: var(--live-accent); }
+html[data-erp-density=compact] #sideAuroraCard { padding: 16px; }
+html[data-erp-density=compact] #sideAuroraCard .aurora-live-block { padding: 12px; }
+html[data-erp-theme=pascoa] #sideAuroraCard { --live-accent: var(--pastel-lavender); }
+@media(max-width:1200px) { #sideAuroraCard .aurora-live-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) {
+  #sideAuroraCard { padding: 16px; }
+  #sideAuroraCard .aurora-live-grid { grid-template-columns: minmax(0,1fr); }
+  #sideAuroraCard .aurora-live-date { margin-left: 0; width: 100%; }
+  #sideAuroraCard .side-aurora-name { font-size: 17px; }
+}
+@media(prefers-reduced-motion:reduce) { #sideAuroraCard,#sideAuroraCard .aurora-live-progress::after,#sideAuroraCard .side-aurora-msg { transition: none; } }
+
+/* Dialog nativo no top layer: independente do overflow e do layout do card. */
+#auroraAchievementsDialog { --live-accent: var(--primary, #d85c9d); box-sizing: border-box; width: min(600px,calc(100% - 32px)); max-width: none; max-height: 85vh; max-height: 85dvh; margin: auto; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius,18px); background: var(--surface); color: var(--text); box-shadow: var(--shadow); font: inherit; }
+#auroraAchievementsDialog[open] { display: flex; flex-direction: column; animation: aurora-catalog-in .16s ease-out both; }
+#auroraAchievementsDialog::backdrop { background: rgb(0 0 0 / .5); animation: aurora-catalog-backdrop-in .16s ease-out both; }
+#auroraAchievementsDialog.is-closing { animation: aurora-catalog-out .16s ease-in both; }
+#auroraAchievementsDialog.is-closing::backdrop { animation: aurora-catalog-backdrop-out .16s ease-in both; }
+#auroraAchievementsDialog .aurora-catalog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-shrink: 0; padding: 20px; border-bottom: 1px solid var(--line); }
+#auroraAchievementsDialog .aurora-catalog-header h2 { margin: 0; font-size: 19px; line-height: 1.4; color: var(--text); }
+#auroraAchievementsDialog .aurora-catalog-header p { margin: 5px 0 0; font-size: 12px; color: var(--muted); }
+#auroraAchievementsDialog button { flex-shrink: 0; padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); color: var(--text); cursor: pointer; font: inherit; font-size: 12px; }
+#auroraAchievementsDialog button:hover { border-color: var(--live-accent); }
+#auroraAchievementsDialog :focus-visible { outline: 2px solid var(--live-accent); outline-offset: -3px; }
+#auroraAchievementsDialog .aurora-catalog-body { min-height: 0; padding: 18px 20px 20px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+#auroraAchievementsScope { margin: 0 0 16px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+#auroraAchievementsCatalog { display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
+#auroraAchievementsCatalog li { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface-2); }
+#auroraAchievementsCatalog li > div { min-width: 0; overflow-wrap: anywhere; }
+#auroraAchievementsCatalog .is-unlocked { border-left: 3px solid var(--live-accent); background: var(--surface-3); }
+#auroraAchievementsCatalog .aurora-catalog-icon { display: grid; place-items: center; flex: 0 0 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); color: var(--muted); font-size: 16px; }
+#auroraAchievementsCatalog .is-unlocked .aurora-catalog-icon { color: var(--live-accent); border-color: var(--live-accent); }
+#auroraAchievementsCatalog h3 { margin: 0; font-size: 13px; font-weight: 700; line-height: 1.5; color: var(--text); }
+#auroraAchievementsCatalog .aurora-catalog-status { display: inline-block; margin: 4px 0 0; font-size: 10px; font-weight: 600; color: var(--muted); }
+#auroraAchievementsCatalog .is-unlocked .aurora-catalog-status { color: var(--text); }
+#auroraAchievementsCatalog p { margin: 7px 0 0; font-size: 11px; line-height: 1.6; color: var(--muted); }
+html[data-erp-theme=pascoa] #auroraAchievementsDialog { --live-accent: var(--pastel-lavender); }
+@keyframes aurora-catalog-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes aurora-catalog-out { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(8px); } }
+@keyframes aurora-catalog-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes aurora-catalog-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+@media(max-width:600px) {
+  #auroraAchievementsDialog .aurora-catalog-header { padding: 16px; gap: 10px; }
+  #auroraAchievementsDialog .aurora-catalog-header h2 { font-size: 17px; }
+  #auroraAchievementsDialog .aurora-catalog-body { padding: 14px 16px 16px; }
+  #auroraAchievementsCatalog li { padding: 12px; gap: 9px; }
+}
+@media(prefers-reduced-motion:reduce) { #auroraAchievementsDialog[open],#auroraAchievementsDialog::backdrop { animation: none; } }
