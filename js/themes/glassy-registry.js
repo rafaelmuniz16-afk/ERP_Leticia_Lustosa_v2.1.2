@@ -9,10 +9,10 @@
     primary: '#b5a1ff', secondary: '#74d9eb', decor: '<canvas id="glassyAmbient" aria-hidden="true"></canvas><button type="button" id="glassyMascot" class="glassy-mascot" title="Cristal Glassy: toque dez vezes para revelar a surpresa"><span aria-hidden="true">◈</span><span id="glassyBubble" class="glassy-bubble">Toque no cristal. Existe uma surpresa aqui. ◈</span></button>', extras: '', idStyles: {},
     font: window.ERPThemeRegistry.original.font,
     source: 'Referências fornecidas: Glassy CRM / Glassy Carousel V2',
-    brand: '<div class="brand"><div class="brand-mark">' + icon('<path d="m12 3 9 9-9 9-9-9Z"/><path d="m12 7 5 5-5 5-5-5Z"/>') + '</div><div><div class="brand-title">Leticia Lustosa</div><div class="brand-sub">ERP • Encerramentos 2026</div></div></div>',
-    header: '<div class="eyebrow">GLASSY CRM <span class="glassy-live-dot"></span></div><h1 class="page-title">Olá, Letícia</h1><p class="page-subtitle">Seu espaço de trabalho · Encerramentos 2026</p>',
+    brand: '<div class="brand"><div class="brand-mark">' + icon('<path d="m12 3 9 9-9 9-9-9Z"/><path d="m12 7 5 5-5 5-5-5Z"/>') + '</div><div><div class="brand-title">ERP Leticia Lustosa</div><div class="brand-sub">Lumus</div></div></div>',
+    header: '<div class="eyebrow">ERP Leticia Lustosa - Lumus <span class="glassy-live-dot"></span></div><h1 class="page-title">Olá, Letícia</h1><p class="page-subtitle">Seu espaço de trabalho · Encerramentos 2026</p>',
     static: {
-      '.eyebrow': ['GLASSY CRM <span class="glassy-live-dot"></span>'],
+      '.eyebrow': ['ERP Leticia Lustosa - Lumus <span class="glassy-live-dot"></span>'],
       '.page-title': ['Olá, Letícia'], '.page-subtitle': ['Seu espaço de trabalho · Encerramentos 2026'],
       '.side-aurora-name': ['Aurora Live'], '.side-aurora-tag': ['RADAR'], '.side-aurora-avatar': ['✦'],
       '.side-card-title': ['Conexão com a nuvem']
